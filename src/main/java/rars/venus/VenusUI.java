@@ -1,5 +1,7 @@
 package rars.venus;
 
+import com.formdev.flatlaf.FlatDarculaLaf;
+import com.formdev.flatlaf.FlatIntelliJLaf;
 import rars.Globals;
 import rars.Settings;
 import rars.riscv.InstructionSet;
@@ -85,7 +87,7 @@ public class VenusUI extends JFrame {
     private JMenuItem runGo, runStep, runBackstep, runReset, runAssemble, runStop, runPause, runClearBreakpoints, runToggleBreakpoints;
     private JCheckBoxMenuItem settingsLabel, settingsPopupInput, settingsValueDisplayBase, settingsAddressDisplayBase,
             settingsExtended, settingsAssembleOnOpen, settingsAssembleAll, settingsAssembleOpen, settingsWarningsAreErrors,
-            settingsStartAtMain, settingsProgramArguments, settingsSelfModifyingCode, settingsRV64, settingsDeriveCurrentWorkingDirectory;
+            settingsStartAtMain, settingsProgramArguments, settingsSelfModifyingCode, settingsRV64, settingsDeriveCurrentWorkingDirectory, settingsDarkMode;
     private JMenuItem settingsExceptionHandler, settingsEditor, settingsHighlighting, settingsMemoryConfiguration;
     private JMenuItem helpHelp, helpAbout;
 
@@ -110,7 +112,7 @@ public class VenusUI extends JFrame {
             settingsExtendedAction, settingsAssembleOnOpenAction, settingsAssembleOpenAction, settingsAssembleAllAction,
             settingsWarningsAreErrorsAction, settingsStartAtMainAction, settingsProgramArgumentsAction,
             settingsExceptionHandlerAction, settingsEditorAction, settingsHighlightingAction, settingsMemoryConfigurationAction,
-            settingsSelfModifyingCodeAction, settingsRV64Action, settingsDeriveCurrentWorkingDirectoryAction;
+            settingsSelfModifyingCodeAction, settingsRV64Action, settingsDeriveCurrentWorkingDirectoryAction, darkModeAction;
     private Action helpHelpAction, helpAboutAction;
 
 
@@ -477,6 +479,14 @@ public class VenusUI extends JFrame {
                     "If set, the working directory is derived from the main file instead of the RARS executable directory.",
                     Settings.Bool.DERIVE_CURRENT_WORKING_DIRECTORY);
 
+            darkModeAction = new SettingsAction("Dark mode", "Dark mode :)", Settings.Bool.DARK_MODE) {
+                @Override
+                public void handler(boolean value) {
+                    if (value) FlatDarculaLaf.setup();
+                    else FlatIntelliJLaf.setup();
+                }
+            };
+
 
             settingsEditorAction = new SettingsEditorAction("Editor...", null,
                     "View and modify text editor settings.", null, null
@@ -631,6 +641,8 @@ public class VenusUI extends JFrame {
         settingsRV64.setSelected(Globals.getSettings().getBooleanSetting(Settings.Bool.RV64_ENABLED));
         settingsDeriveCurrentWorkingDirectory = new JCheckBoxMenuItem(settingsDeriveCurrentWorkingDirectoryAction);
         settingsDeriveCurrentWorkingDirectory.setSelected(Globals.getSettings().getBooleanSetting(Settings.Bool.DERIVE_CURRENT_WORKING_DIRECTORY));
+        settingsDarkMode = new JCheckBoxMenuItem(darkModeAction);
+        settingsDarkMode.setSelected(Globals.getSettings().getBooleanSetting(Settings.Bool.DARK_MODE));
         settingsAssembleOnOpen = new JCheckBoxMenuItem(settingsAssembleOnOpenAction);
         settingsAssembleOnOpen.setSelected(Globals.getSettings().getBooleanSetting(Settings.Bool.ASSEMBLE_ON_OPEN));
         settingsAssembleAll = new JCheckBoxMenuItem(settingsAssembleAllAction);
@@ -665,6 +677,7 @@ public class VenusUI extends JFrame {
         settings.add(settingsSelfModifyingCode);
         settings.add(settingsRV64);
         settings.addSeparator();
+        settings.add(settingsDarkMode);
         settings.add(settingsEditor);
         settings.add(settingsHighlighting);
         settings.add(settingsExceptionHandler);

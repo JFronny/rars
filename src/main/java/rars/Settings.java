@@ -158,7 +158,9 @@ public class Settings extends Observable {
          * Flag to determine whether to calculate relative paths from the current working directory
          * or from the RARS executable path.
         */
-        DERIVE_CURRENT_WORKING_DIRECTORY("DeriveCurrentWorkingDirectory", false);
+        DERIVE_CURRENT_WORKING_DIRECTORY("DeriveCurrentWorkingDirectory", false),
+
+        DARK_MODE("darkMode", true);
 
         // TODO: add option for turning off user trap handling and interrupts
         private String name;
@@ -356,6 +358,8 @@ public class Settings extends Observable {
      * RGB color of caret in Editor
      */
     public static final int EDITOR_CARET_COLOR = 16;
+
+    public static final int EDITOR_DARK_MODE = 20;
 
     public enum ColorMode {
         DEFAULT("DEF"),

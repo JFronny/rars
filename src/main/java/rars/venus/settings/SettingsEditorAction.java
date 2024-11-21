@@ -397,6 +397,7 @@ public class SettingsEditorAction extends GuiAction {
             caretChanger = new ColorChangerPanel("Caret", "Select the Editor's Caret-Color", Settings.EDITOR_CARET_COLOR);
 
             bgChanger.addElements(editorStylePanel);
+            editorStylePanel.add(new Checkbox());
             fgChanger.addElements(editorStylePanel);
             lhChanger.addElements(editorStylePanel);
             textSelChanger.addElements(editorStylePanel);

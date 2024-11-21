@@ -7,6 +7,7 @@ repositories {
 }
 
 dependencies {
+    implementation("com.formdev:flatlaf:3.5.2")
 }
 
 sourceSets {

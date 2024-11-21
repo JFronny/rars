@@ -60,7 +60,7 @@ public class BitmapDisplay extends AbstractToolAndApplication {
     // Some GUI settings
     private EmptyBorder emptyBorder = new EmptyBorder(4, 4, 4, 4);
     private Font countFonts = new Font("Times", Font.BOLD, 12);
-    private Color backgroundColor = Color.WHITE;
+    private Color backgroundColor = Color.GRAY;
 
     // Values for Combo Boxes
 

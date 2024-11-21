@@ -1,5 +1,7 @@
 package rars;
 
+import com.formdev.flatlaf.FlatDarculaLaf;
+import com.formdev.flatlaf.FlatIntelliJLaf;
 import rars.api.Program;
 import rars.riscv.InstructionSet;
 import rars.riscv.dump.DumpFormat;
@@ -234,6 +236,8 @@ public class Launch {
         SwingUtilities.invokeLater(
                 new Runnable() {
                     public void run() {
+                        if (Globals.getSettings().getBooleanSetting(Settings.Bool.DARK_MODE)) FlatDarculaLaf.setup();
+                        else FlatIntelliJLaf.setup();
                         //Turn off metal's use of bold fonts
                         //UIManager.put("swing.boldMetal", Boolean.FALSE);
                         new VenusUI("RARS " + Globals.version, filenameList);
