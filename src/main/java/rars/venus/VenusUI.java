@@ -3,6 +3,7 @@ package rars.venus;
 import com.canonical.appmenu.Registrar;
 import com.formdev.flatlaf.FlatDarculaLaf;
 import com.formdev.flatlaf.FlatIntelliJLaf;
+import io.gitlab.jfronny.commons.logger.SystemLoggerPlus;
 import io.gitlab.jfronny.dbusmenu4j.*;
 import org.freedesktop.dbus.DBusPath;
 import org.freedesktop.dbus.connections.impl.DBusConnection;
@@ -264,16 +265,16 @@ public class VenusUI extends JFrame {
             var peerClass = Class.forName("sun.awt.X11.XBaseWindow");
             var x11Peer = peerClass.cast(peer);
             long windowPtr = (long) peerClass.getDeclaredMethod("getWindow").invoke(x11Peer);
+            SystemLoggerPlus logger = SystemLoggerPlus.forName("dbusmenu4j");
             DMLog log = new DMLog() {
                 @Override
                 public void warn(String s) {
-                    System.out.println("WARN: " + s);
+                    logger.warn(s);
                 }
 
                 @Override
                 public void error(String s, Throwable throwable) {
-                    System.out.println("ERROR: " + s);
-                    throwable.printStackTrace();
+                    logger.error(s, throwable);
                 }
 
                 @Override

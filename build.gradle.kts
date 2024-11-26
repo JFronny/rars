@@ -5,14 +5,13 @@ plugins {
 
 repositories {
     mavenCentral()
-    mavenLocal()
+    maven("https://maven.frohnmeyer-wds.de/artifacts")
 }
 
 dependencies {
     implementation("com.formdev:flatlaf:3.5.2")
     implementation("io.gitlab.jfronny:dbusmenu4j:1.2.0-SNAPSHOT")
-//    implementation("com.github.hypfvieh:dbus-java-core:5.1.0")
-//    implementation("com.github.hypfvieh:dbus-java-transport-native-unixsocket:5.1.0")
+    implementation("io.gitlab.jfronny:commons-logger:1.8.0-SNAPSHOT")
 }
 
 sourceSets {
@@ -34,11 +33,18 @@ application {
 }
 
 tasks {
-    this.run.configure {
+    run.configure {
         jvmArgs(
-            "--add-opens=java.desktop/sun.awt.X11=ALL-UNNAMED",
             "--add-opens=java.desktop/java.awt=ALL-UNNAMED",
             "--add-exports=java.desktop/sun.awt.X11=ALL-UNNAMED"
         )
+    }
+    jar {
+        manifest {
+            attributes(
+                "Add-Opens" to "java.desktop/java.awt",
+                "Add-Exports" to "java.desktop/sun.awt.X11"
+            )
+        }
     }
 }
