@@ -12,6 +12,7 @@ dependencies {
     implementation("com.formdev:flatlaf:3.5.2")
     implementation("io.gitlab.jfronny:dbusmenu4j:1.2.0-SNAPSHOT")
     implementation("io.gitlab.jfronny:commons-logger:1.8.0-SNAPSHOT")
+    implementation("io.gitlab.jfronny:slf4j-over-jpl:1.8.0-SNAPSHOT")
 }
 
 sourceSets {
