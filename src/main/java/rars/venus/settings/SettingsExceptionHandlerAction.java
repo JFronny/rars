@@ -161,15 +161,15 @@ public class SettingsExceptionHandlerAction extends GuiAction {
     // Associated action class: selecting exception handler file.  Attached to handler selector.
     private class ExceptionHandlerSelectionAction implements ActionListener {
         public void actionPerformed(ActionEvent e) {
-            JFileChooser chooser = new JFileChooser();
+            FileDialog chooser = new FileDialog(Globals.getGui(), "Select...", FileDialog.LOAD);
             String pathname = Globals.getSettings().getExceptionHandler();
             if (pathname != null) {
                 File file = new File(pathname);
-                if (file.exists()) chooser.setSelectedFile(file);
+                if (file.exists()) chooser.setFile(file.toString());
             }
-            int result = chooser.showOpenDialog(Globals.getGui());
-            if (result == JFileChooser.APPROVE_OPTION) {
-                pathname = chooser.getSelectedFile().getPath();//.replaceAll("\\\\","/");
+            chooser.show();
+            if (chooser.getFile() != null) {
+                pathname = chooser.getFile();//.replaceAll("\\\\","/");
                 exceptionHandlerDisplay.setText(pathname);
             }
         }

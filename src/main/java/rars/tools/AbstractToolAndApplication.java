@@ -13,14 +13,13 @@ import rars.venus.run.RunSpeedPanel;
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.TitledBorder;
-import javax.swing.filechooser.FileFilter;
 import java.awt.*;
 import java.awt.event.*;
-import java.io.File;
-import java.io.IOException;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.Observable;
 import java.util.Observer;
+import java.util.stream.Collectors;
 
 /*
 Copyright (c) 2003-2008,  Pete Sanderson and Kenneth Vollmar
@@ -341,25 +340,32 @@ public abstract class AbstractToolAndApplication extends JFrame implements Tool,
         openFileButton.addActionListener(
                 new ActionListener() {
                     public void actionPerformed(ActionEvent e) {
-                        JFileChooser fileChooser = new JFileChooser();
-                        JCheckBox multiFileAssembleChoose = new JCheckBox("Assemble all in selected file's directory", multiFileAssemble);
-                        multiFileAssembleChoose.setToolTipText("If checked, selected file will be assembled first and all other assembly files in directory will be assembled also.");
-                        fileChooser.setAccessory(multiFileAssembleChoose);
+                        FileDialog fileChooser = new FileDialog(that, "Open program...", FileDialog.LOAD);
+//                        JCheckBox multiFileAssembleChoose = new JCheckBox("Assemble all in selected file's directory", multiFileAssemble);
+//                        multiFileAssembleChoose.setToolTipText("If checked, selected file will be assembled first and all other assembly files in directory will be assembled also.");
+//                        fileChooser.setAccessory(multiFileAssembleChoose);
                         if (mostRecentlyOpenedFile != null) {
-                            fileChooser.setSelectedFile(mostRecentlyOpenedFile);
+                            fileChooser.setDirectory(mostRecentlyOpenedFile.getParent());
+                            fileChooser.setFile(mostRecentlyOpenedFile.toString());
                         }
+                        fileChooser.setFile(Globals.fileExtensions.stream()
+                                .map(s -> "*." + s)
+                                .collect(Collectors.joining("|")));
                         // DPS 13 June 2007.  The next 4 lines add file filter to file chooser.
-                        FileFilter defaultFileFilter = FilenameFinder.getFileFilter(Globals.fileExtensions, "Assembler Files", true);
-                        fileChooser.addChoosableFileFilter(defaultFileFilter);
-                        fileChooser.addChoosableFileFilter(fileChooser.getAcceptAllFileFilter());
-                        fileChooser.setFileFilter(defaultFileFilter);
+//                        FilenameFilter defaultFileFilter = FilenameFinder.getFileFilter(Globals.fileExtensions, "Assembler Files", true);
+//                        fileChooser.addChoosableFileFilter(defaultFileFilter);
+//                        fileChooser.addChoosableFileFilter(fileChooser.getAcceptAllFileFilter());
+//                        fileChooser.setFilenameFilter(defaultFileFilter);
 
-                        if (fileChooser.showOpenDialog(that) == JFileChooser.APPROVE_OPTION) {
-                            multiFileAssemble = multiFileAssembleChoose.isSelected();
-                            File theFile = fileChooser.getSelectedFile();
+                        fileChooser.show();
+                        File[] result = fileChooser.getFiles();
+                        if (result.length != 0) {
+//                            multiFileAssemble = multiFileAssembleChoose.isSelected();
+                            File theFile = result[0];
                             try {
                                 theFile = theFile.getCanonicalFile();
-                            } catch (IOException ioe) {
+                            } catch (Exception ioe) {
+                                theFile = mostRecentlyOpenedFile;
                                 // nothing to do, theFile will keep current value
                             }
                             String currentFilePath = theFile.getPath();
