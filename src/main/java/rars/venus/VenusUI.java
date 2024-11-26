@@ -1,7 +1,13 @@
 package rars.venus;
 
+import com.canonical.appmenu.Registrar;
 import com.formdev.flatlaf.FlatDarculaLaf;
 import com.formdev.flatlaf.FlatIntelliJLaf;
+import io.gitlab.jfronny.dbusmenu4j.*;
+import org.freedesktop.dbus.DBusPath;
+import org.freedesktop.dbus.connections.impl.DBusConnection;
+import org.freedesktop.dbus.connections.impl.DBusConnectionBuilder;
+import org.freedesktop.dbus.types.UInt32;
 import rars.Globals;
 import rars.Settings;
 import rars.riscv.InstructionSet;
@@ -247,6 +253,43 @@ public class VenusUI extends JFrame {
         if (!this.editor.open(paths)) {
             System.out.println("Internal Error: could not open files" + String.join(", ", paths));
             System.exit(1);
+        }
+
+        // Set up dbus menu
+        try {
+            var pfield = Component.class.getDeclaredField("peer");
+            pfield.setAccessible(true);
+            var peer = pfield.get(this);
+            // Assume we are on X11
+            var peerClass = Class.forName("sun.awt.X11.XBaseWindow");
+            var x11Peer = peerClass.cast(peer);
+            long windowPtr = (long) peerClass.getDeclaredMethod("getWindow").invoke(x11Peer);
+            DMLog log = new DMLog() {
+                @Override
+                public void warn(String s) {
+                    System.out.println("WARN: " + s);
+                }
+
+                @Override
+                public void error(String s, Throwable throwable) {
+                    System.out.println("ERROR: " + s);
+                    throwable.printStackTrace();
+                }
+
+                @Override
+                public boolean isDebug() {
+                    return false;
+                }
+            };
+            SwingMenuHolder<?> menuHolder = SwingMenuHolder.get(menu, "DBusMenuRoot", log);
+            var menu = new DbusmenuImpl(windowPtr, menuHolder, log);
+            DBusConnection connection = DBusConnectionBuilder.forSessionBus().build();
+            menu.export(connection);
+            var registrar = connection.getRemoteObject("com.canonical.AppMenu.Registrar", "/com/canonical/AppMenu/Registrar", Registrar.class);
+            registrar.RegisterWindow(new UInt32(windowPtr), new DBusPath(menu.getObjectPath()));
+            getJMenuBar().setVisible(false);
+        } catch (Exception e) {
+            e.printStackTrace();
         }
     }
 
