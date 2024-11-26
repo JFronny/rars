@@ -1,0 +1,1486 @@
+[
+{
+  "name":"[Ljava.awt.event.ActionListener;"
+},
+{
+  "name":"[Ljava.awt.event.MouseMotionListener;"
+},
+{
+  "name":"com.canonical.Dbusmenu",
+  "allDeclaredClasses":true,
+  "queryAllDeclaredMethods":true,
+  "methods":[{"name":"AboutToShow","parameterTypes":["int"] }, {"name":"Event","parameterTypes":["int","java.lang.String","org.freedesktop.dbus.types.Variant","org.freedesktop.dbus.types.UInt32"] }, {"name":"GetLayout","parameterTypes":["int","int","java.util.List"] }]
+},
+{
+  "name":"com.canonical.Dbusmenu$ItemActivationRequested",
+  "queryAllPublicConstructors":true
+},
+{
+  "name":"com.canonical.Dbusmenu$ItemsPropertiesUpdated",
+  "queryAllPublicConstructors":true
+},
+{
+  "name":"com.canonical.Dbusmenu$LayoutUpdated",
+  "queryAllPublicConstructors":true
+},
+{
+  "name":"com.canonical.EventGroupEventsStruct",
+  "allDeclaredFields":true
+},
+{
+  "name":"com.canonical.GetGroupPropertiesPropertiesStruct",
+  "allDeclaredFields":true
+},
+{
+  "name":"com.canonical.GetLayoutLayoutStruct",
+  "allDeclaredFields":true
+},
+{
+  "name":"com.canonical.Struct1",
+  "allDeclaredFields":true
+},
+{
+  "name":"com.canonical.Struct2",
+  "allDeclaredFields":true
+},
+{
+  "name":"com.formdev.flatlaf.icons.FlatAscendingSortIcon",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"com.formdev.flatlaf.icons.FlatCheckBoxIcon",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"com.formdev.flatlaf.icons.FlatCheckBoxMenuItemIcon",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"com.formdev.flatlaf.icons.FlatDescendingSortIcon",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"com.formdev.flatlaf.icons.FlatHelpButtonIcon",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"com.formdev.flatlaf.icons.FlatInternalFrameCloseIcon",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"com.formdev.flatlaf.icons.FlatInternalFrameIconifyIcon",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"com.formdev.flatlaf.icons.FlatInternalFrameMaximizeIcon",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"com.formdev.flatlaf.icons.FlatInternalFrameRestoreIcon",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"com.formdev.flatlaf.icons.FlatMenuArrowIcon",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"com.formdev.flatlaf.icons.FlatMenuItemArrowIcon",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"com.formdev.flatlaf.icons.FlatTabbedPaneCloseIcon",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"com.formdev.flatlaf.ui.FlatArrowButton",
+  "methods":[{"name":"coalesceEvents","parameterTypes":["java.awt.AWTEvent","java.awt.AWTEvent"] }]
+},
+{
+  "name":"com.formdev.flatlaf.ui.FlatButtonBorder",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"com.formdev.flatlaf.ui.FlatButtonUI",
+  "methods":[{"name":"createUI","parameterTypes":["javax.swing.JComponent"] }]
+},
+{
+  "name":"com.formdev.flatlaf.ui.FlatCheckBoxMenuItemUI",
+  "methods":[{"name":"createUI","parameterTypes":["javax.swing.JComponent"] }]
+},
+{
+  "name":"com.formdev.flatlaf.ui.FlatCheckBoxUI",
+  "methods":[{"name":"createUI","parameterTypes":["javax.swing.JComponent"] }]
+},
+{
+  "name":"com.formdev.flatlaf.ui.FlatComboBoxUI",
+  "methods":[{"name":"createUI","parameterTypes":["javax.swing.JComponent"] }]
+},
+{
+  "name":"com.formdev.flatlaf.ui.FlatComboBoxUI$FlatComboBoxButton",
+  "methods":[{"name":"coalesceEvents","parameterTypes":["java.awt.AWTEvent","java.awt.AWTEvent"] }]
+},
+{
+  "name":"com.formdev.flatlaf.ui.FlatComboBoxUI$FlatComboPopup",
+  "methods":[{"name":"coalesceEvents","parameterTypes":["java.awt.AWTEvent","java.awt.AWTEvent"] }]
+},
+{
+  "name":"com.formdev.flatlaf.ui.FlatDesktopIconUI",
+  "methods":[{"name":"createUI","parameterTypes":["javax.swing.JComponent"] }]
+},
+{
+  "name":"com.formdev.flatlaf.ui.FlatDesktopPaneUI",
+  "methods":[{"name":"createUI","parameterTypes":["javax.swing.JComponent"] }]
+},
+{
+  "name":"com.formdev.flatlaf.ui.FlatInternalFrameTitlePane",
+  "methods":[{"name":"coalesceEvents","parameterTypes":["java.awt.AWTEvent","java.awt.AWTEvent"] }]
+},
+{
+  "name":"com.formdev.flatlaf.ui.FlatInternalFrameTitlePane$1",
+  "methods":[{"name":"coalesceEvents","parameterTypes":["java.awt.AWTEvent","java.awt.AWTEvent"] }]
+},
+{
+  "name":"com.formdev.flatlaf.ui.FlatInternalFrameUI",
+  "methods":[{"name":"createUI","parameterTypes":["javax.swing.JComponent"] }]
+},
+{
+  "name":"com.formdev.flatlaf.ui.FlatInternalFrameUI$FlatInternalFrameBorder",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"com.formdev.flatlaf.ui.FlatLabelUI",
+  "methods":[{"name":"createUI","parameterTypes":["javax.swing.JComponent"] }]
+},
+{
+  "name":"com.formdev.flatlaf.ui.FlatListCellBorder$Default",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"com.formdev.flatlaf.ui.FlatListUI",
+  "methods":[{"name":"createUI","parameterTypes":["javax.swing.JComponent"] }]
+},
+{
+  "name":"com.formdev.flatlaf.ui.FlatMarginBorder",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"com.formdev.flatlaf.ui.FlatMenuBarBorder",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"com.formdev.flatlaf.ui.FlatMenuBarUI",
+  "methods":[{"name":"createUI","parameterTypes":["javax.swing.JComponent"] }]
+},
+{
+  "name":"com.formdev.flatlaf.ui.FlatMenuItemBorder",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"com.formdev.flatlaf.ui.FlatMenuItemUI",
+  "methods":[{"name":"createUI","parameterTypes":["javax.swing.JComponent"] }]
+},
+{
+  "name":"com.formdev.flatlaf.ui.FlatMenuUI",
+  "methods":[{"name":"createUI","parameterTypes":["javax.swing.JComponent"] }]
+},
+{
+  "name":"com.formdev.flatlaf.ui.FlatOptionPaneUI",
+  "methods":[{"name":"createUI","parameterTypes":["javax.swing.JComponent"] }]
+},
+{
+  "name":"com.formdev.flatlaf.ui.FlatPanelUI",
+  "methods":[{"name":"createUI","parameterTypes":["javax.swing.JComponent"] }]
+},
+{
+  "name":"com.formdev.flatlaf.ui.FlatPopupMenuBorder",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"com.formdev.flatlaf.ui.FlatPopupMenuSeparatorUI",
+  "methods":[{"name":"createUI","parameterTypes":["javax.swing.JComponent"] }]
+},
+{
+  "name":"com.formdev.flatlaf.ui.FlatPopupMenuUI",
+  "methods":[{"name":"createUI","parameterTypes":["javax.swing.JComponent"] }]
+},
+{
+  "name":"com.formdev.flatlaf.ui.FlatRootPaneUI",
+  "methods":[{"name":"createUI","parameterTypes":["javax.swing.JComponent"] }]
+},
+{
+  "name":"com.formdev.flatlaf.ui.FlatRoundBorder",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"com.formdev.flatlaf.ui.FlatScrollBarUI",
+  "methods":[{"name":"createUI","parameterTypes":["javax.swing.JComponent"] }]
+},
+{
+  "name":"com.formdev.flatlaf.ui.FlatScrollBarUI$FlatScrollBarButton",
+  "methods":[{"name":"coalesceEvents","parameterTypes":["java.awt.AWTEvent","java.awt.AWTEvent"] }]
+},
+{
+  "name":"com.formdev.flatlaf.ui.FlatScrollPaneBorder",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"com.formdev.flatlaf.ui.FlatScrollPaneUI",
+  "methods":[{"name":"createUI","parameterTypes":["javax.swing.JComponent"] }]
+},
+{
+  "name":"com.formdev.flatlaf.ui.FlatSliderUI",
+  "methods":[{"name":"createUI","parameterTypes":["javax.swing.JComponent"] }]
+},
+{
+  "name":"com.formdev.flatlaf.ui.FlatSplitPaneUI",
+  "methods":[{"name":"createUI","parameterTypes":["javax.swing.JComponent"] }]
+},
+{
+  "name":"com.formdev.flatlaf.ui.FlatSplitPaneUI$1",
+  "methods":[{"name":"coalesceEvents","parameterTypes":["java.awt.AWTEvent","java.awt.AWTEvent"] }]
+},
+{
+  "name":"com.formdev.flatlaf.ui.FlatSplitPaneUI$FlatSplitPaneDivider",
+  "methods":[{"name":"coalesceEvents","parameterTypes":["java.awt.AWTEvent","java.awt.AWTEvent"] }]
+},
+{
+  "name":"com.formdev.flatlaf.ui.FlatSplitPaneUI$FlatSplitPaneDivider$FlatOneTouchButton",
+  "methods":[{"name":"coalesceEvents","parameterTypes":["java.awt.AWTEvent","java.awt.AWTEvent"] }]
+},
+{
+  "name":"com.formdev.flatlaf.ui.FlatTabbedPaneUI",
+  "methods":[{"name":"createUI","parameterTypes":["javax.swing.JComponent"] }]
+},
+{
+  "name":"com.formdev.flatlaf.ui.FlatTabbedPaneUI$FlatMoreTabsButton",
+  "methods":[{"name":"coalesceEvents","parameterTypes":["java.awt.AWTEvent","java.awt.AWTEvent"] }]
+},
+{
+  "name":"com.formdev.flatlaf.ui.FlatTabbedPaneUI$FlatScrollableTabButton",
+  "methods":[{"name":"coalesceEvents","parameterTypes":["java.awt.AWTEvent","java.awt.AWTEvent"] }]
+},
+{
+  "name":"com.formdev.flatlaf.ui.FlatTabbedPaneUI$FlatTabAreaButton",
+  "methods":[{"name":"coalesceEvents","parameterTypes":["java.awt.AWTEvent","java.awt.AWTEvent"] }]
+},
+{
+  "name":"com.formdev.flatlaf.ui.FlatTableCellBorder$Default",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"com.formdev.flatlaf.ui.FlatTableHeaderBorder",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"com.formdev.flatlaf.ui.FlatTableHeaderUI",
+  "methods":[{"name":"createUI","parameterTypes":["javax.swing.JComponent"] }]
+},
+{
+  "name":"com.formdev.flatlaf.ui.FlatTableHeaderUI$FlatTableHeaderCellRendererPane",
+  "methods":[{"name":"coalesceEvents","parameterTypes":["java.awt.AWTEvent","java.awt.AWTEvent"] }]
+},
+{
+  "name":"com.formdev.flatlaf.ui.FlatTableUI",
+  "methods":[{"name":"createUI","parameterTypes":["javax.swing.JComponent"] }]
+},
+{
+  "name":"com.formdev.flatlaf.ui.FlatTableUI$FlatBooleanRenderer",
+  "methods":[{"name":"coalesceEvents","parameterTypes":["java.awt.AWTEvent","java.awt.AWTEvent"] }]
+},
+{
+  "name":"com.formdev.flatlaf.ui.FlatTextAreaUI",
+  "methods":[{"name":"createUI","parameterTypes":["javax.swing.JComponent"] }]
+},
+{
+  "name":"com.formdev.flatlaf.ui.FlatTextBorder",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"com.formdev.flatlaf.ui.FlatTextFieldUI",
+  "methods":[{"name":"createUI","parameterTypes":["javax.swing.JComponent"] }]
+},
+{
+  "name":"com.formdev.flatlaf.ui.FlatToolBarBorder",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"com.formdev.flatlaf.ui.FlatToolBarSeparatorUI",
+  "methods":[{"name":"createUI","parameterTypes":["javax.swing.JComponent"] }]
+},
+{
+  "name":"com.formdev.flatlaf.ui.FlatToolBarUI",
+  "methods":[{"name":"createUI","parameterTypes":["javax.swing.JComponent"] }]
+},
+{
+  "name":"com.formdev.flatlaf.ui.FlatViewportUI",
+  "methods":[{"name":"createUI","parameterTypes":["javax.swing.JComponent"] }]
+},
+{
+  "name":"com.formdev.flatlaf.ui.FlatWindowResizer$DragBorderComponent",
+  "methods":[{"name":"coalesceEvents","parameterTypes":["java.awt.AWTEvent","java.awt.AWTEvent"] }]
+},
+{
+  "name":"com.sun.org.apache.xerces.internal.jaxp.DocumentBuilderFactoryImpl",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"io.gitlab.jfronny.dbusmenu4j.DPair",
+  "allDeclaredFields":true
+},
+{
+  "name":"io.gitlab.jfronny.dbusmenu4j.DbusmenuImpl",
+  "queryAllDeclaredMethods":true
+},
+{
+  "name":"java.awt.Component",
+  "fields":[{"name":"peer"}]
+},
+{
+  "name":"java.awt.SequencedEvent"
+},
+{
+  "name":"java.awt.event.KeyEvent",
+  "allPublicFields":true
+},
+{
+  "name":"java.lang.Thread",
+  "fields":[{"name":"threadLocalRandomProbe"}]
+},
+{
+  "name":"java.security.SecureRandomParameters"
+},
+{
+  "name":"java.util.concurrent.atomic.AtomicBoolean",
+  "fields":[{"name":"value"}]
+},
+{
+  "name":"java.util.concurrent.atomic.Striped64",
+  "fields":[{"name":"base"}, {"name":"cellsBusy"}]
+},
+{
+  "name":"javax.imageio.spi.ImageReaderSpi"
+},
+{
+  "name":"javax.imageio.spi.ImageReaderWriterSpi",
+  "methods":[{"name":"getFileSuffixes","parameterTypes":[] }, {"name":"getFormatNames","parameterTypes":[] }, {"name":"getMIMETypes","parameterTypes":[] }]
+},
+{
+  "name":"javax.imageio.spi.ImageWriterSpi"
+},
+{
+  "name":"javax.swing.JComponent",
+  "methods":[{"name":"getUI","parameterTypes":[] }]
+},
+{
+  "name":"javax.swing.plaf.basic.BasicGraphicsUtils",
+  "methods":[{"name":"drawStringUnderlineCharAt","parameterTypes":["javax.swing.JComponent","java.awt.Graphics2D","java.lang.String","int","float","float"] }, {"name":"getClippedString","parameterTypes":["javax.swing.JComponent","java.awt.FontMetrics","java.lang.String","int"] }]
+},
+{
+  "name":"javax.swing.plaf.basic.BasicMenuBarUI",
+  "methods":[{"name":"loadActionMap","parameterTypes":["javax.swing.plaf.basic.LazyActionMap"] }]
+},
+{
+  "name":"javax.swing.plaf.basic.BasicOptionPaneUI",
+  "methods":[{"name":"loadActionMap","parameterTypes":["javax.swing.plaf.basic.LazyActionMap"] }]
+},
+{
+  "name":"javax.swing.plaf.basic.BasicTabbedPaneUI",
+  "methods":[{"name":"loadActionMap","parameterTypes":["javax.swing.plaf.basic.LazyActionMap"] }]
+},
+{
+  "name":"javax.swing.plaf.basic.BasicTableUI",
+  "methods":[{"name":"loadActionMap","parameterTypes":["javax.swing.plaf.basic.LazyActionMap"] }]
+},
+{
+  "name":"net.miginfocom.swing.MigLayout"
+},
+{
+  "name":"org.freedesktop.dbus.connections.base.GlobalHandler",
+  "queryAllDeclaredMethods":true
+},
+{
+  "name":"org.freedesktop.dbus.interfaces.DBus$NameAcquired",
+  "queryAllDeclaredConstructors":true,
+  "methods":[{"name":"<init>","parameterTypes":["java.lang.String","java.lang.String"] }]
+},
+{
+  "name":"org.freedesktop.dbus.interfaces.Introspectable",
+  "allDeclaredClasses":true,
+  "queryAllDeclaredMethods":true
+},
+{
+  "name":"org.freedesktop.dbus.interfaces.Peer",
+  "allDeclaredClasses":true,
+  "queryAllDeclaredMethods":true
+},
+{
+  "name":"org.freedesktop.dbus.interfaces.Properties",
+  "allDeclaredClasses":true,
+  "queryAllDeclaredMethods":true,
+  "methods":[{"name":"Get","parameterTypes":["java.lang.String","java.lang.String"] }, {"name":"GetAll","parameterTypes":["java.lang.String"] }, {"name":"Set","parameterTypes":["java.lang.String","java.lang.String","java.lang.Object"] }]
+},
+{
+  "name":"org.freedesktop.dbus.interfaces.Properties$PropertiesChanged",
+  "queryAllPublicConstructors":true
+},
+{
+  "name":"rars.riscv.dump.AbstractDumpFormat"
+},
+{
+  "name":"rars.riscv.dump.AsciiTextDumpFormat",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"rars.riscv.dump.BinaryDumpFormat",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"rars.riscv.dump.BinaryTextDumpFormat",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"rars.riscv.dump.DumpFormat"
+},
+{
+  "name":"rars.riscv.dump.DumpFormatLoader"
+},
+{
+  "name":"rars.riscv.dump.HexTextDumpFormat",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"rars.riscv.dump.IntelHexDumpFormat",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"rars.riscv.dump.SegmentWindowDumpFormat",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"rars.riscv.instructions.ADD",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"rars.riscv.instructions.ADDI",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"rars.riscv.instructions.ADDIW",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"rars.riscv.instructions.ADDW",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"rars.riscv.instructions.AND",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"rars.riscv.instructions.ANDI",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"rars.riscv.instructions.AUIPC",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"rars.riscv.instructions.Arithmetic"
+},
+{
+  "name":"rars.riscv.instructions.ArithmeticW"
+},
+{
+  "name":"rars.riscv.instructions.BEQ",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"rars.riscv.instructions.BGE",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"rars.riscv.instructions.BGEU",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"rars.riscv.instructions.BLT",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"rars.riscv.instructions.BLTU",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"rars.riscv.instructions.BNE",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"rars.riscv.instructions.Branch"
+},
+{
+  "name":"rars.riscv.instructions.CSRRC",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"rars.riscv.instructions.CSRRCI",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"rars.riscv.instructions.CSRRS",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"rars.riscv.instructions.CSRRSI",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"rars.riscv.instructions.CSRRW",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"rars.riscv.instructions.CSRRWI",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"rars.riscv.instructions.DIV",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"rars.riscv.instructions.DIVU",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"rars.riscv.instructions.DIVUW",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"rars.riscv.instructions.DIVW",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"rars.riscv.instructions.Double"
+},
+{
+  "name":"rars.riscv.instructions.EBREAK",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"rars.riscv.instructions.ECALL",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"rars.riscv.instructions.FADDD",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"rars.riscv.instructions.FADDS",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"rars.riscv.instructions.FCLASSD",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"rars.riscv.instructions.FCLASSS",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"rars.riscv.instructions.FCVTDL",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"rars.riscv.instructions.FCVTDLU",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"rars.riscv.instructions.FCVTDS",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"rars.riscv.instructions.FCVTDW",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"rars.riscv.instructions.FCVTDWU",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"rars.riscv.instructions.FCVTLD",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"rars.riscv.instructions.FCVTLS",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"rars.riscv.instructions.FCVTLUD",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"rars.riscv.instructions.FCVTLUS",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"rars.riscv.instructions.FCVTSD",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"rars.riscv.instructions.FCVTSL",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"rars.riscv.instructions.FCVTSLU",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"rars.riscv.instructions.FCVTSW",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"rars.riscv.instructions.FCVTSWU",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"rars.riscv.instructions.FCVTWD",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"rars.riscv.instructions.FCVTWS",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"rars.riscv.instructions.FCVTWUD",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"rars.riscv.instructions.FCVTWUS",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"rars.riscv.instructions.FDIVD",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"rars.riscv.instructions.FDIVS",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"rars.riscv.instructions.FENCE",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"rars.riscv.instructions.FENCEI",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"rars.riscv.instructions.FEQD",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"rars.riscv.instructions.FEQS",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"rars.riscv.instructions.FLD",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"rars.riscv.instructions.FLED",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"rars.riscv.instructions.FLES",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"rars.riscv.instructions.FLTD",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"rars.riscv.instructions.FLTS",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"rars.riscv.instructions.FLW",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"rars.riscv.instructions.FMADDD",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"rars.riscv.instructions.FMADDS",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"rars.riscv.instructions.FMAXD",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"rars.riscv.instructions.FMAXS",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"rars.riscv.instructions.FMIND",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"rars.riscv.instructions.FMINS",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"rars.riscv.instructions.FMSUBD",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"rars.riscv.instructions.FMSUBS",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"rars.riscv.instructions.FMULD",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"rars.riscv.instructions.FMULS",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"rars.riscv.instructions.FMVDX",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"rars.riscv.instructions.FMVSX",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"rars.riscv.instructions.FMVXD",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"rars.riscv.instructions.FMVXS",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"rars.riscv.instructions.FNMADDD",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"rars.riscv.instructions.FNMADDS",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"rars.riscv.instructions.FNMSUBD",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"rars.riscv.instructions.FNMSUBS",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"rars.riscv.instructions.FSD",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"rars.riscv.instructions.FSGNJD",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"rars.riscv.instructions.FSGNJND",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"rars.riscv.instructions.FSGNJNS",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"rars.riscv.instructions.FSGNJS",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"rars.riscv.instructions.FSGNJXD",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"rars.riscv.instructions.FSGNJXS",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"rars.riscv.instructions.FSQRTD",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"rars.riscv.instructions.FSQRTS",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"rars.riscv.instructions.FSUBD",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"rars.riscv.instructions.FSUBS",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"rars.riscv.instructions.FSW",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"rars.riscv.instructions.Floating"
+},
+{
+  "name":"rars.riscv.instructions.FusedDouble"
+},
+{
+  "name":"rars.riscv.instructions.FusedFloat"
+},
+{
+  "name":"rars.riscv.instructions.ImmediateInstruction"
+},
+{
+  "name":"rars.riscv.instructions.JAL",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"rars.riscv.instructions.JALR",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"rars.riscv.instructions.LB",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"rars.riscv.instructions.LBU",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"rars.riscv.instructions.LD",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"rars.riscv.instructions.LH",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"rars.riscv.instructions.LHU",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"rars.riscv.instructions.LUI",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"rars.riscv.instructions.LW",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"rars.riscv.instructions.LWU",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"rars.riscv.instructions.Load"
+},
+{
+  "name":"rars.riscv.instructions.MUL",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"rars.riscv.instructions.MULH",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"rars.riscv.instructions.MULHSU",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"rars.riscv.instructions.MULHU",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"rars.riscv.instructions.MULW",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"rars.riscv.instructions.OR",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"rars.riscv.instructions.ORI",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"rars.riscv.instructions.REM",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"rars.riscv.instructions.REMU",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"rars.riscv.instructions.REMUW",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"rars.riscv.instructions.REMW",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"rars.riscv.instructions.SB",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"rars.riscv.instructions.SD",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"rars.riscv.instructions.SH",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"rars.riscv.instructions.SLL",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"rars.riscv.instructions.SLLI",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"rars.riscv.instructions.SLLI64",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"rars.riscv.instructions.SLLIW",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"rars.riscv.instructions.SLLW",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"rars.riscv.instructions.SLT",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"rars.riscv.instructions.SLTI",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"rars.riscv.instructions.SLTIU",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"rars.riscv.instructions.SLTU",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"rars.riscv.instructions.SRA",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"rars.riscv.instructions.SRAI",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"rars.riscv.instructions.SRAI64",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"rars.riscv.instructions.SRAIW",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"rars.riscv.instructions.SRAW",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"rars.riscv.instructions.SRL",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"rars.riscv.instructions.SRLI",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"rars.riscv.instructions.SRLI64",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"rars.riscv.instructions.SRLIW",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"rars.riscv.instructions.SRLW",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"rars.riscv.instructions.SUB",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"rars.riscv.instructions.SUBW",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"rars.riscv.instructions.SW",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"rars.riscv.instructions.Store"
+},
+{
+  "name":"rars.riscv.instructions.URET",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"rars.riscv.instructions.WFI",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"rars.riscv.instructions.XOR",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"rars.riscv.instructions.XORI",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"rars.tools.AbstractToolAndApplication",
+  "methods":[{"name":"coalesceEvents","parameterTypes":["java.awt.AWTEvent","java.awt.AWTEvent"] }]
+},
+{
+  "name":"rars.tools.AbstractToolAndApplication$1"
+},
+{
+  "name":"rars.tools.AbstractToolAndApplication$10"
+},
+{
+  "name":"rars.tools.AbstractToolAndApplication$2"
+},
+{
+  "name":"rars.tools.AbstractToolAndApplication$3"
+},
+{
+  "name":"rars.tools.AbstractToolAndApplication$4"
+},
+{
+  "name":"rars.tools.AbstractToolAndApplication$5"
+},
+{
+  "name":"rars.tools.AbstractToolAndApplication$6"
+},
+{
+  "name":"rars.tools.AbstractToolAndApplication$7"
+},
+{
+  "name":"rars.tools.AbstractToolAndApplication$8"
+},
+{
+  "name":"rars.tools.AbstractToolAndApplication$9"
+},
+{
+  "name":"rars.tools.AbstractToolAndApplication$ConnectButton"
+},
+{
+  "name":"rars.tools.AbstractToolAndApplication$CreateAssembleRunProgram"
+},
+{
+  "name":"rars.tools.AbstractToolAndApplication$CreateAssembleRunProgram$1"
+},
+{
+  "name":"rars.tools.AbstractToolAndApplication$EnterKeyListener"
+},
+{
+  "name":"rars.tools.AbstractToolAndApplication$GUIUpdater"
+},
+{
+  "name":"rars.tools.AbstractToolAndApplication$MessageField"
+},
+{
+  "name":"rars.tools.AbstractToolAndApplication$MessageField$MessageWriter"
+},
+{
+  "name":"rars.tools.BHTEntry"
+},
+{
+  "name":"rars.tools.BHTSimGUI"
+},
+{
+  "name":"rars.tools.BHTSimGUI$1"
+},
+{
+  "name":"rars.tools.BHTSimulator",
+  "methods":[{"name":"<init>","parameterTypes":[] }, {"name":"coalesceEvents","parameterTypes":["java.awt.AWTEvent","java.awt.AWTEvent"] }]
+},
+{
+  "name":"rars.tools.BHTableModel"
+},
+{
+  "name":"rars.tools.BitmapDisplay",
+  "methods":[{"name":"<init>","parameterTypes":[] }, {"name":"coalesceEvents","parameterTypes":["java.awt.AWTEvent","java.awt.AWTEvent"] }]
+},
+{
+  "name":"rars.tools.BitmapDisplay$1"
+},
+{
+  "name":"rars.tools.BitmapDisplay$2"
+},
+{
+  "name":"rars.tools.BitmapDisplay$3"
+},
+{
+  "name":"rars.tools.BitmapDisplay$4"
+},
+{
+  "name":"rars.tools.BitmapDisplay$5"
+},
+{
+  "name":"rars.tools.BitmapDisplay$6"
+},
+{
+  "name":"rars.tools.BitmapDisplay$GraphicsPanel"
+},
+{
+  "name":"rars.tools.BitmapDisplay$Grid"
+},
+{
+  "name":"rars.tools.CacheSimulator",
+  "methods":[{"name":"<init>","parameterTypes":[] }, {"name":"coalesceEvents","parameterTypes":["java.awt.AWTEvent","java.awt.AWTEvent"] }]
+},
+{
+  "name":"rars.tools.CacheSimulator$1"
+},
+{
+  "name":"rars.tools.CacheSimulator$2"
+},
+{
+  "name":"rars.tools.CacheSimulator$3"
+},
+{
+  "name":"rars.tools.CacheSimulator$4"
+},
+{
+  "name":"rars.tools.CacheSimulator$5"
+},
+{
+  "name":"rars.tools.CacheSimulator$AbstractCache"
+},
+{
+  "name":"rars.tools.CacheSimulator$Animation"
+},
+{
+  "name":"rars.tools.CacheSimulator$AnyCache"
+},
+{
+  "name":"rars.tools.CacheSimulator$CacheAccessResult"
+},
+{
+  "name":"rars.tools.CacheSimulator$CacheBlock"
+},
+{
+  "name":"rars.tools.DigitalLabSim",
+  "methods":[{"name":"<init>","parameterTypes":[] }, {"name":"coalesceEvents","parameterTypes":["java.awt.AWTEvent","java.awt.AWTEvent"] }]
+},
+{
+  "name":"rars.tools.DigitalLabSim$1"
+},
+{
+  "name":"rars.tools.DigitalLabSim$HexaKeyboard"
+},
+{
+  "name":"rars.tools.DigitalLabSim$HexaKeyboard$EcouteurClick"
+},
+{
+  "name":"rars.tools.DigitalLabSim$OneSecondCounter"
+},
+{
+  "name":"rars.tools.DigitalLabSim$SevenSegmentDisplay"
+},
+{
+  "name":"rars.tools.DigitalLabSim$SevenSegmentPanel"
+},
+{
+  "name":"rars.tools.FloatRepresentation",
+  "methods":[{"name":"<init>","parameterTypes":[] }, {"name":"coalesceEvents","parameterTypes":["java.awt.AWTEvent","java.awt.AWTEvent"] }]
+},
+{
+  "name":"rars.tools.FloatRepresentation$1"
+},
+{
+  "name":"rars.tools.FloatRepresentation$BinaryDisplayKeystrokeListener"
+},
+{
+  "name":"rars.tools.FloatRepresentation$BinaryFractionDisplayTextField"
+},
+{
+  "name":"rars.tools.FloatRepresentation$BinaryToDecimalFormulaGraphic"
+},
+{
+  "name":"rars.tools.FloatRepresentation$DecimalDisplayKeystokeListenter"
+},
+{
+  "name":"rars.tools.FloatRepresentation$FlavorsOfFloat"
+},
+{
+  "name":"rars.tools.FloatRepresentation$HexDisplayKeystrokeListener"
+},
+{
+  "name":"rars.tools.FloatRepresentation$HexToBinaryGraphicPanel"
+},
+{
+  "name":"rars.tools.FloatRepresentation$InstructionsPane"
+},
+{
+  "name":"rars.tools.InstructionCounter",
+  "methods":[{"name":"<init>","parameterTypes":[] }, {"name":"coalesceEvents","parameterTypes":["java.awt.AWTEvent","java.awt.AWTEvent"] }]
+},
+{
+  "name":"rars.tools.InstructionMemoryDump",
+  "methods":[{"name":"<init>","parameterTypes":[] }, {"name":"coalesceEvents","parameterTypes":["java.awt.AWTEvent","java.awt.AWTEvent"] }]
+},
+{
+  "name":"rars.tools.InstructionMemoryDump$1"
+},
+{
+  "name":"rars.tools.InstructionMemoryDump$2"
+},
+{
+  "name":"rars.tools.InstructionStatistics",
+  "methods":[{"name":"<init>","parameterTypes":[] }, {"name":"coalesceEvents","parameterTypes":["java.awt.AWTEvent","java.awt.AWTEvent"] }]
+},
+{
+  "name":"rars.tools.KeyboardAndDisplaySimulator",
+  "methods":[{"name":"<init>","parameterTypes":[] }, {"name":"coalesceEvents","parameterTypes":["java.awt.AWTEvent","java.awt.AWTEvent"] }]
+},
+{
+  "name":"rars.tools.KeyboardAndDisplaySimulator$1"
+},
+{
+  "name":"rars.tools.KeyboardAndDisplaySimulator$1$1"
+},
+{
+  "name":"rars.tools.KeyboardAndDisplaySimulator$2"
+},
+{
+  "name":"rars.tools.KeyboardAndDisplaySimulator$3"
+},
+{
+  "name":"rars.tools.KeyboardAndDisplaySimulator$4"
+},
+{
+  "name":"rars.tools.KeyboardAndDisplaySimulator$DelayLengthPanel"
+},
+{
+  "name":"rars.tools.KeyboardAndDisplaySimulator$DelayLengthPanel$DelayLengthListener"
+},
+{
+  "name":"rars.tools.KeyboardAndDisplaySimulator$DisplayResizeAdapter"
+},
+{
+  "name":"rars.tools.KeyboardAndDisplaySimulator$FixedLengthDelay"
+},
+{
+  "name":"rars.tools.KeyboardAndDisplaySimulator$FontChanger"
+},
+{
+  "name":"rars.tools.KeyboardAndDisplaySimulator$FontSettingDialog"
+},
+{
+  "name":"rars.tools.KeyboardAndDisplaySimulator$FontSettingDialog$1"
+},
+{
+  "name":"rars.tools.KeyboardAndDisplaySimulator$FontSettingDialog$2"
+},
+{
+  "name":"rars.tools.KeyboardAndDisplaySimulator$FontSettingDialog$3"
+},
+{
+  "name":"rars.tools.KeyboardAndDisplaySimulator$KeyboardKeyListener"
+},
+{
+  "name":"rars.tools.KeyboardAndDisplaySimulator$NormallyDistributedDelay"
+},
+{
+  "name":"rars.tools.KeyboardAndDisplaySimulator$TransmitterDelayTechnique"
+},
+{
+  "name":"rars.tools.KeyboardAndDisplaySimulator$UniformlyDistributedDelay"
+},
+{
+  "name":"rars.tools.MemoryReferenceVisualization",
+  "methods":[{"name":"<init>","parameterTypes":[] }, {"name":"coalesceEvents","parameterTypes":["java.awt.AWTEvent","java.awt.AWTEvent"] }]
+},
+{
+  "name":"rars.tools.MemoryReferenceVisualization$1"
+},
+{
+  "name":"rars.tools.MemoryReferenceVisualization$2"
+},
+{
+  "name":"rars.tools.MemoryReferenceVisualization$3"
+},
+{
+  "name":"rars.tools.MemoryReferenceVisualization$4"
+},
+{
+  "name":"rars.tools.MemoryReferenceVisualization$5"
+},
+{
+  "name":"rars.tools.MemoryReferenceVisualization$6"
+},
+{
+  "name":"rars.tools.MemoryReferenceVisualization$7"
+},
+{
+  "name":"rars.tools.MemoryReferenceVisualization$8"
+},
+{
+  "name":"rars.tools.MemoryReferenceVisualization$ColorChooserControls"
+},
+{
+  "name":"rars.tools.MemoryReferenceVisualization$ColorChooserControls$1"
+},
+{
+  "name":"rars.tools.MemoryReferenceVisualization$ColorChooserControls$ColorChooserListener"
+},
+{
+  "name":"rars.tools.MemoryReferenceVisualization$CounterColor"
+},
+{
+  "name":"rars.tools.MemoryReferenceVisualization$CounterColorScale"
+},
+{
+  "name":"rars.tools.MemoryReferenceVisualization$GraphicsPanel"
+},
+{
+  "name":"rars.tools.MemoryReferenceVisualization$Grid"
+},
+{
+  "name":"rars.tools.TimerTool",
+  "methods":[{"name":"<init>","parameterTypes":[] }, {"name":"coalesceEvents","parameterTypes":["java.awt.AWTEvent","java.awt.AWTEvent"] }]
+},
+{
+  "name":"rars.tools.TimerTool$1"
+},
+{
+  "name":"rars.tools.TimerTool$2"
+},
+{
+  "name":"rars.tools.TimerTool$3"
+},
+{
+  "name":"rars.tools.TimerTool$Tick"
+},
+{
+  "name":"rars.tools.TimerTool$TimeCmpDaemon"
+},
+{
+  "name":"rars.tools.TimerTool$TimePanel"
+},
+{
+  "name":"rars.venus.DataSegmentWindow",
+  "methods":[{"name":"coalesceEvents","parameterTypes":["java.awt.AWTEvent","java.awt.AWTEvent"] }]
+},
+{
+  "name":"rars.venus.DataSegmentWindow$NextButton",
+  "methods":[{"name":"coalesceEvents","parameterTypes":["java.awt.AWTEvent","java.awt.AWTEvent"] }]
+},
+{
+  "name":"rars.venus.DataSegmentWindow$PrevButton",
+  "methods":[{"name":"coalesceEvents","parameterTypes":["java.awt.AWTEvent","java.awt.AWTEvent"] }]
+},
+{
+  "name":"rars.venus.EditTabbedPane",
+  "methods":[{"name":"coalesceEvents","parameterTypes":["java.awt.AWTEvent","java.awt.AWTEvent"] }]
+},
+{
+  "name":"rars.venus.ExecutePane",
+  "methods":[{"name":"coalesceEvents","parameterTypes":["java.awt.AWTEvent","java.awt.AWTEvent"] }]
+},
+{
+  "name":"rars.venus.LabelsWindow",
+  "methods":[{"name":"coalesceEvents","parameterTypes":["java.awt.AWTEvent","java.awt.AWTEvent"] }]
+},
+{
+  "name":"rars.venus.MainPane",
+  "methods":[{"name":"coalesceEvents","parameterTypes":["java.awt.AWTEvent","java.awt.AWTEvent"] }]
+},
+{
+  "name":"rars.venus.MessagesPane",
+  "methods":[{"name":"coalesceEvents","parameterTypes":["java.awt.AWTEvent","java.awt.AWTEvent"] }]
+},
+{
+  "name":"rars.venus.NumberDisplayBaseChooser",
+  "methods":[{"name":"coalesceEvents","parameterTypes":["java.awt.AWTEvent","java.awt.AWTEvent"] }]
+},
+{
+  "name":"rars.venus.TextSegmentWindow",
+  "methods":[{"name":"coalesceEvents","parameterTypes":["java.awt.AWTEvent","java.awt.AWTEvent"] }]
+},
+{
+  "name":"rars.venus.VenusUI",
+  "methods":[{"name":"coalesceEvents","parameterTypes":["java.awt.AWTEvent","java.awt.AWTEvent"] }]
+},
+{
+  "name":"rars.venus.registers.ControlAndStatusWindow",
+  "methods":[{"name":"coalesceEvents","parameterTypes":["java.awt.AWTEvent","java.awt.AWTEvent"] }]
+},
+{
+  "name":"rars.venus.registers.FloatingPointWindow",
+  "methods":[{"name":"coalesceEvents","parameterTypes":["java.awt.AWTEvent","java.awt.AWTEvent"] }]
+},
+{
+  "name":"rars.venus.registers.RegisterBlockWindow",
+  "methods":[{"name":"coalesceEvents","parameterTypes":["java.awt.AWTEvent","java.awt.AWTEvent"] }]
+},
+{
+  "name":"rars.venus.registers.RegisterBlockWindow$1",
+  "methods":[{"name":"coalesceEvents","parameterTypes":["java.awt.AWTEvent","java.awt.AWTEvent"] }]
+},
+{
+  "name":"rars.venus.registers.RegisterBlockWindow$MyTippedJTable",
+  "methods":[{"name":"coalesceEvents","parameterTypes":["java.awt.AWTEvent","java.awt.AWTEvent"] }]
+},
+{
+  "name":"rars.venus.registers.RegisterBlockWindow$MyTippedJTable$1",
+  "methods":[{"name":"coalesceEvents","parameterTypes":["java.awt.AWTEvent","java.awt.AWTEvent"] }]
+},
+{
+  "name":"rars.venus.registers.RegisterBlockWindow$RegisterCellRenderer",
+  "methods":[{"name":"coalesceEvents","parameterTypes":["java.awt.AWTEvent","java.awt.AWTEvent"] }]
+},
+{
+  "name":"rars.venus.registers.RegistersPane",
+  "methods":[{"name":"coalesceEvents","parameterTypes":["java.awt.AWTEvent","java.awt.AWTEvent"] }]
+},
+{
+  "name":"rars.venus.registers.RegistersWindow",
+  "methods":[{"name":"coalesceEvents","parameterTypes":["java.awt.AWTEvent","java.awt.AWTEvent"] }]
+},
+{
+  "name":"rars.venus.run.RunSpeedPanel",
+  "methods":[{"name":"coalesceEvents","parameterTypes":["java.awt.AWTEvent","java.awt.AWTEvent"] }]
+},
+{
+  "name":"rars.venus.util.RepeatButton",
+  "methods":[{"name":"coalesceEvents","parameterTypes":["java.awt.AWTEvent","java.awt.AWTEvent"] }]
+},
+{
+  "name":"sun.awt.X11.XBaseWindow",
+  "methods":[{"name":"getWindow","parameterTypes":[] }]
+},
+{
+  "name":"sun.java2d.marlin.DMarlinRenderingEngine",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"sun.security.provider.NativePRNG",
+  "methods":[{"name":"<init>","parameterTypes":[] }, {"name":"<init>","parameterTypes":["java.security.SecureRandomParameters"] }]
+},
+{
+  "name":"sun.security.provider.NativePRNG$NonBlocking",
+  "methods":[{"name":"<init>","parameterTypes":[] }, {"name":"<init>","parameterTypes":["java.security.SecureRandomParameters"] }]
+},
+{
+  "name":"sun.security.provider.SHA",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+}
+]

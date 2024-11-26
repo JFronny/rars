@@ -1,6 +1,7 @@
 plugins {
     application
     id("com.gradleup.shadow") version "8.3.5"
+    id("org.graalvm.buildtools.native") version "0.10.3"
 }
 
 repositories {
@@ -31,6 +32,21 @@ java {
 
 application {
     mainClass = "rars.Launch"
+}
+
+graalvmNative.binaries {
+    named("main") {
+        buildArgs(
+            "-march=compatibility",
+            "--gc=G1",
+            "-Djava.awt.headless=false",
+        )
+        javaLauncher = javaToolchains.launcherFor {
+            languageVersion = JavaLanguageVersion.of(21)
+            vendor = JvmVendorSpec.matching("Oracle Corporation")
+        }
+        sharedLibrary = false
+    }
 }
 
 tasks {

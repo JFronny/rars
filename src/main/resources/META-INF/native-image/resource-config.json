@@ -1,0 +1,162 @@
+{
+  "resources":{
+  "includes":[{
+    "pattern":"\\QConfig.properties\\E"
+  }, {
+    "pattern":"\\QMETA-INF/services/com.formdev.flatlaf.FlatDefaultsAddon\\E"
+  }, {
+    "pattern":"\\QMETA-INF/services/io.gitlab.jfronny.commons.logger.LoggerConfiguration\\E"
+  }, {
+    "pattern":"\\QMETA-INF/services/java.awt.im.spi.InputMethodDescriptor\\E"
+  }, {
+    "pattern":"\\QMETA-INF/services/java.lang.System$LoggerFinder\\E"
+  }, {
+    "pattern":"\\QMETA-INF/services/java.net.spi.InetAddressResolverProvider\\E"
+  }, {
+    "pattern":"\\QMETA-INF/services/java.nio.channels.spi.SelectorProvider\\E"
+  }, {
+    "pattern":"\\QMETA-INF/services/java.time.zone.ZoneRulesProvider\\E"
+  }, {
+    "pattern":"\\QMETA-INF/services/java.util.prefs.PreferencesFactory\\E"
+  }, {
+    "pattern":"\\QMETA-INF/services/javax.imageio.spi.ImageInputStreamSpi\\E"
+  }, {
+    "pattern":"\\QMETA-INF/services/javax.imageio.spi.ImageOutputStreamSpi\\E"
+  }, {
+    "pattern":"\\QMETA-INF/services/javax.imageio.spi.ImageReaderSpi\\E"
+  }, {
+    "pattern":"\\QMETA-INF/services/javax.imageio.spi.ImageTranscoderSpi\\E"
+  }, {
+    "pattern":"\\QMETA-INF/services/javax.imageio.spi.ImageWriterSpi\\E"
+  }, {
+    "pattern":"\\QMETA-INF/services/javax.xml.parsers.DocumentBuilderFactory\\E"
+  }, {
+    "pattern":"\\QMETA-INF/services/org.freedesktop.dbus.spi.message.ISocketProvider\\E"
+  }, {
+    "pattern":"\\QMETA-INF/services/org.freedesktop.dbus.spi.transport.ITransportProvider\\E"
+  }, {
+    "pattern":"\\QMETA-INF/services/org.slf4j.spi.SLF4JServiceProvider\\E"
+  }, {
+    "pattern":"\\QPseudoOps.txt\\E"
+  }, {
+    "pattern":"\\QSettings.properties\\E"
+  }, {
+    "pattern":"\\Qcom/formdev/flatlaf/FlatDarculaLaf.properties\\E"
+  }, {
+    "pattern":"\\Qcom/formdev/flatlaf/FlatDarkLaf.properties\\E"
+  }, {
+    "pattern":"\\Qcom/formdev/flatlaf/FlatLaf.properties\\E"
+  }, {
+    "pattern":"\\Qcom/formdev/flatlaf/icons/JavaCup16.png\\E"
+  }, {
+    "pattern":"\\Qimages/Assemble16.png\\E"
+  }, {
+    "pattern":"\\Qimages/Assemble22.png\\E"
+  }, {
+    "pattern":"\\Qimages/Copy16.png\\E"
+  }, {
+    "pattern":"\\Qimages/Copy22.png\\E"
+  }, {
+    "pattern":"\\Qimages/Cut16.gif\\E"
+  }, {
+    "pattern":"\\Qimages/Cut22.gif\\E"
+  }, {
+    "pattern":"\\Qimages/Dump16.png\\E"
+  }, {
+    "pattern":"\\Qimages/Dump22.png\\E"
+  }, {
+    "pattern":"\\Qimages/Find16.png\\E"
+  }, {
+    "pattern":"\\Qimages/Find22.png\\E"
+  }, {
+    "pattern":"\\Qimages/Help16.png\\E"
+  }, {
+    "pattern":"\\Qimages/Help22.png\\E"
+  }, {
+    "pattern":"\\Qimages/MyBlank16.gif\\E"
+  }, {
+    "pattern":"\\Qimages/New16.png\\E"
+  }, {
+    "pattern":"\\Qimages/New22.png\\E"
+  }, {
+    "pattern":"\\Qimages/Next22.png\\E"
+  }, {
+    "pattern":"\\Qimages/Open16.png\\E"
+  }, {
+    "pattern":"\\Qimages/Open22.png\\E"
+  }, {
+    "pattern":"\\Qimages/Paste16.png\\E"
+  }, {
+    "pattern":"\\Qimages/Paste22.png\\E"
+  }, {
+    "pattern":"\\Qimages/Pause16.png\\E"
+  }, {
+    "pattern":"\\Qimages/Pause22.png\\E"
+  }, {
+    "pattern":"\\Qimages/Play16.png\\E"
+  }, {
+    "pattern":"\\Qimages/Play22.png\\E"
+  }, {
+    "pattern":"\\Qimages/Previous22.png\\E"
+  }, {
+    "pattern":"\\Qimages/RISC-V.png\\E"
+  }, {
+    "pattern":"\\Qimages/Redo16.png\\E"
+  }, {
+    "pattern":"\\Qimages/Redo22.png\\E"
+  }, {
+    "pattern":"\\Qimages/Reset16.png\\E"
+  }, {
+    "pattern":"\\Qimages/Reset22.png\\E"
+  }, {
+    "pattern":"\\Qimages/Save16.png\\E"
+  }, {
+    "pattern":"\\Qimages/Save22.png\\E"
+  }, {
+    "pattern":"\\Qimages/SaveAs16.png\\E"
+  }, {
+    "pattern":"\\Qimages/SaveAs22.png\\E"
+  }, {
+    "pattern":"\\Qimages/StepBack16.png\\E"
+  }, {
+    "pattern":"\\Qimages/StepBack22.png\\E"
+  }, {
+    "pattern":"\\Qimages/StepForward16.png\\E"
+  }, {
+    "pattern":"\\Qimages/StepForward22.png\\E"
+  }, {
+    "pattern":"\\Qimages/Stop16.png\\E"
+  }, {
+    "pattern":"\\Qimages/Stop22.png\\E"
+  }, {
+    "pattern":"\\Qimages/Undo16.png\\E"
+  }, {
+    "pattern":"\\Qimages/Undo22.png\\E"
+  }, {
+    "pattern":"\\Qrars/riscv/dump\\E"
+  }, {
+    "pattern":"\\Qrars/riscv/instructions\\E"
+  }, {
+    "pattern":"\\Qrars/tools\\E"
+  }, {
+    "pattern":"java.base:\\Qjdk/internal/icu/impl/data/icudt72b/nfc.nrm\\E"
+  }, {
+    "pattern":"java.base:\\Qjdk/internal/icu/impl/data/icudt72b/nfkc.nrm\\E"
+  }, {
+    "pattern":"java.desktop:\\Qcom/formdev/flatlaf/resources/Bundle.properties\\E"
+  }, {
+    "pattern":"java.desktop:\\Qjavax/swing/plaf/basic/icons/JavaCup16.png\\E"
+  }, {
+    "pattern":"java.desktop:\\Qjavax/swing/text/html/default.css\\E"
+  }]},
+  "bundles":[{
+    "name":"com.formdev.flatlaf.resources.Bundle",
+    "locales":["", "de"]
+  }, {
+    "name":"com.sun.swing.internal.plaf.basic.resources.basic",
+    "classNames":["com.sun.swing.internal.plaf.basic.resources.basic", "com.sun.swing.internal.plaf.basic.resources.basic_de"]
+  }, {
+    "name":"sun.awt.resources.awt",
+    "classNames":["sun.awt.resources.awt", "sun.awt.resources.awt_de"]
+  }]
+}
