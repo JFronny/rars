@@ -28,7 +28,7 @@ jobs:
         uses: gradle/gradle-build-action@v3
         with:
           gradle-version: current
-          arguments: shadowJar nativeCompile
+          arguments: shadowJar
       - name: Upload build artifacts
         uses: actions/upload-artifact@v4
         with:
