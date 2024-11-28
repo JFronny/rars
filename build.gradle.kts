@@ -14,6 +14,10 @@ dependencies {
     implementation("io.gitlab.jfronny:dbusmenu4j:1.2.0-SNAPSHOT")
     implementation("io.gitlab.jfronny:commons-logger:1.8.0-SNAPSHOT")
     implementation("io.gitlab.jfronny:slf4j-over-jpl:1.8.0-SNAPSHOT")
+
+    testImplementation("org.junit.jupiter:junit-jupiter-api:5.8.1")
+    testImplementation("org.junit.jupiter:junit-jupiter-params:5.8.1")
+    testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:5.8.1")
 }
 
 sourceSets {
@@ -50,6 +54,9 @@ graalvmNative.binaries {
 }
 
 tasks {
+    test {
+        useJUnitPlatform()
+    }
     run.configure {
         jvmArgs(
             "--add-opens=java.desktop/java.awt=ALL-UNNAMED",

@@ -1,3 +1,10 @@
+package rars.test;
+
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.Arguments;
+import org.junit.jupiter.params.provider.MethodSource;
 import rars.*;
 import rars.api.Options;
 import rars.api.Program;
@@ -5,82 +12,59 @@ import rars.riscv.*;
 import rars.simulator.Simulator;
 
 import java.io.*;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.stream.Stream;
 
-public class Test {
-    public static void main(String[] args){
+import static org.junit.jupiter.api.Assertions.fail;
+
+public class RarsTest {
+    @BeforeAll
+    public static void testMain(){
         Globals.initialize();
-        Globals.getSettings().setBooleanSettingNonPersistent(Settings.Bool.RV64_ENABLED,false);
-        InstructionSet.rv64 = false;
-        Globals.instructionSet.populate();
+    }
+
+    private static Stream<Arguments> provideRiscvTests() {
         Options opt = new Options();
         opt.startAtMain = true;
         opt.maxSteps = 1000;
-        Program p = new Program(opt);
-        File[] tests = new File("./test").listFiles(), riscv_tests = new File("./test/riscv-tests").listFiles(), riscv_tests_64 = new File("./test/riscv-tests-64").listFiles();
-        if(tests == null){
-            System.out.println("./test doesn't exist");
-            return;
-        }
-        StringBuilder total = new StringBuilder("\n");
-        for(File test : tests){
-            if(test.isFile() && test.getName().endsWith(".s")){
-                String errors = run(test.getPath(),p);
-                if(errors.equals("")) {
-                    System.out.print('.');
-                }else{
-                    System.out.print('X');
-                    total.append(errors).append('\n');
-                }
-            }
-        }
-        if(riscv_tests == null){
-            System.out.println("./test/riscv-tests doesn't exist");
-            return;
-        }
-        for(File test : riscv_tests){
-            if(test.isFile() && test.getName().endsWith(".s")){
-                String errors = run(test.getPath(),p);
-                if(errors.equals("")) {
-                    System.out.print('.');
-                }else{
-                    System.out.print('X');
-                    total.append(errors).append('\n');
-                }
-            }
-        }
-
-
-        if(riscv_tests_64 == null){
-            System.out.println("./test/riscv-tests-64 doesn't exist");
-            return;
-        }
-        Globals.getSettings().setBooleanSettingNonPersistent(Settings.Bool.RV64_ENABLED,true);
-        InstructionSet.rv64 = true;
-        Globals.instructionSet.populate();
-        for(File test : riscv_tests_64){
-            if(test.isFile() && test.getName().toLowerCase().endsWith(".s")){
-                String errors = run(test.getPath(),p);
-                if(errors.equals("")) {
-                    System.out.print('.');
-                }else{
-                    System.out.print('X');
-                    total.append(errors).append('\n');
-                }
-            }
-        }
-        System.out.println(total);
-        checkBinary();
-        checkPsuedo();
+        Program prog = new Program(opt);
+        return Stream.of(
+                ".",
+            "riscv-tests",
+            "riscv-tests-64"
+        ).map(Path.of("src/test/resources")::resolve)
+                .flatMap(s -> {
+                    try {
+                        return Files.list(s);
+                    } catch (IOException e) {
+                        fail("Could not list files in " + s, e);
+                        return null;
+                    }
+                })
+                .filter(Files::isRegularFile)
+                .filter(s -> s.getFileName().toString().endsWith(".s"))
+                .map(p -> Arguments.of(
+                        p,
+                        p.getParent().getFileName().toString().contains("64"),
+                        prog
+                ));
     }
-    public static String run(String path, Program p){
+
+    @ParameterizedTest
+    @MethodSource("provideRiscvTests")
+    void run(Path path, boolean rv64, Program p) {
+        Globals.getSettings().setBooleanSettingNonPersistent(Settings.Bool.RV64_ENABLED, rv64);
+        InstructionSet.rv64 = rv64;
+        Globals.instructionSet.populate();
+
         int[] errorlines = null;
         String stdin = "", stdout = "", stderr ="";
         // TODO: better config system
         // This is just a temporary solution that should work for the tests I want to write
-        try {
-            BufferedReader br = new BufferedReader(new FileReader(path));
+        try (BufferedReader br = Files.newBufferedReader(path)) {
             String line = br.readLine();
             while(line.startsWith("#")){
                 if (line.startsWith("#error on lines:")) {
@@ -99,53 +83,52 @@ public class Test {
                 line = br.readLine();
             }
         }catch(FileNotFoundException fe){
-            return "Could not find " + path;
+            fail("Could not find " + path, fe);
         }catch(IOException io){
-            return "Error reading " + path;
+            fail("Error reading " + path, io);
         }
         try {
-            p.assemble(path);
+            p.assemble(path.toAbsolutePath().normalize().toString());
             if(errorlines != null){
-                return "Expected asssembly error, but successfully assembled " + path;
+                fail("Expected asssembly error, but successfully assembled " + path);
             }
             p.setup(null,stdin);
             Simulator.Reason r = p.simulate();
             if(r != Simulator.Reason.NORMAL_TERMINATION){
-                return "Ended abnormally while executing " + path;
+                fail("Ended abnormally while executing " + path);
             }else{
                 if(p.getExitCode() != 42) {
-                    return "Final exit code was wrong for " + path;
+                    fail("Final exit code was wrong for " + path);
                 }
                 if(!p.getSTDOUT().equals(stdout)){
-                    return "STDOUT was wrong for " + path + "\n Expected \""+stdout+"\" got \""+p.getSTDOUT()+"\"";
+                    fail("STDOUT was wrong for " + path + "\n Expected \""+stdout+"\" got \""+p.getSTDOUT()+"\"");
                 }
                 if(!p.getSTDERR().equals(stderr)){
-                    return "STDERR was wrong for " + path;
+                    fail("STDERR was wrong for " + path);
                 }
-                return "";
             }
         } catch (AssemblyException ae){
             if(errorlines == null) {
-                return "Failed to assemble " + path;
+                fail("Failed to assemble " + path);
             }
             if(ae.errors().errorCount() != errorlines.length){
-                return "Mismatched number of assembly errors in" + path;
+                fail("Mismatched number of assembly errors in" + path);;
             }
             Iterator<ErrorMessage> errors = ae.errors().getErrorMessages().iterator();
             for(int number : errorlines){
                 ErrorMessage error = errors.next();
                 while(error.isWarning()) error = errors.next();
                 if(error.getLine() != number){
-                    return "Expected error on line " + number + ". Found error on line " + error.getLine()+" in " + path;
+                    fail("Expected error on line " + number + ". Found error on line " + error.getLine()+" in " + path);
                 }
             }
-            return "";
         } catch (SimulationException se){
-            return "Crashed while executing " + path;
+            fail("Crashed while executing " + path, se);
         }
     }
 
-    public static void checkBinary(){
+    @Test
+    public void checkBinary(){
         Options opt = new Options();
         opt.startAtMain = true;
         opt.maxSteps = 500;
@@ -169,12 +152,10 @@ public class Test {
                     ProgramStatement assembled = p.getMemory().getStatement(0x400000);
                     ProgramStatement ps = new ProgramStatement(word,0x400000);
                     if (ps.getInstruction() == null) {
-                        System.out.println("Error 1 on: " + program);
-                        continue;
+                        fail("Error 1 on: " + program);
                     }
                     if (ps.getPrintableBasicAssemblyStatement().contains("invalid")) {
-                        System.out.println("Error 2 on: " + program);
-                        continue;
+                        fail("Error 2 on: " + program);
                     }
                     String decompiled = ps.getPrintableBasicAssemblyStatement();
 
@@ -182,26 +163,26 @@ public class Test {
                     p.setup(null,"");
                     int word2 = p.getMemory().getWord(0x400000);
                     if (word != word2) {
-                        System.out.println("Error 3 on: " + program);
+                        fail("Error 3 on: " + program);
                     }
 
 
                     if(!ps.getInstruction().equals(binst)){
-                        System.out.println("Error 4 on: " + program);
+                        fail("Error 4 on: " + program);
                     }
 
 /*
                     if (assembled.getInstruction() == null) {
-                        System.out.println("Error 5 on: " + program);
+                        fail("Error 5 on: " + program);
                         continue;
                     }
                     if (assembled.getOperands().length != ps.getOperands().length){
-                        System.out.println("Error 6 on: " + program);
+                        fail("Error 6 on: " + program);
                         continue;
                     }
                     for (int i = 0; i < assembled.getOperands().length; i++){
                         if(assembled.getOperand(i) != ps.getOperand(i)){
-                            System.out.println("Error 7 on: " + program);
+                            fail("Error 7 on: " + program);
                         }
                     }*/
 
@@ -216,19 +197,21 @@ public class Test {
                         String decompiled2 = decompiled.replaceAll("x6","t1").replaceAll("x7","t2").replaceAll("x28","t3").trim();
                         String spaced_out2 = decompiled2.replaceAll(",",", ");
                         if(!program.equals(decompiled2) && !program.equals(spaced_out2)) {
-                            System.out.println("Error 5 on: " + program;
+                            fail("Error 5 on: " + program);
                         }
 
                         Globals.getSettings().setBooleanSetting(Settings.Bool.DISPLAY_VALUES_IN_HEX,true);
                     }
                     */
                 } catch (Exception e) {
-                    System.out.println("Error 5 on: " + program);
+                    fail("Error 5 on: " + program, e);
                 }
             }
         }
     }
-    public static void checkPsuedo(){
+
+    @Test
+    public void checkPsuedo(){
         Options opt = new Options();
         opt.startAtMain = true;
         opt.maxSteps = 500;
@@ -248,12 +231,10 @@ public class Test {
                     int second = p.getMemory().getWord(0x400004);
                     ProgramStatement ps = new ProgramStatement(first,0x400000);
                     if (ps.getInstruction() == null) {
-                        System.out.println("Error 11 on: " + program);
-                        continue;
+                        fail("Error 11 on: " + program);
                     }
                     if (ps.getPrintableBasicAssemblyStatement().contains("invalid")) {
-                        System.out.println("Error 12 on: " + program);
-                        continue;
+                        fail("Error 12 on: " + program);
                     }
                     if(program.contains("t0") || program.contains("t1") ||program.contains("t2") ||program.contains("f1")) {
                         // TODO: test that each register individually is meaningful and test every register.
@@ -264,19 +245,19 @@ public class Test {
                         int word1 = p.getMemory().getWord(0x400000);
                         int word2 = p.getMemory().getWord(0x400004);
                         if (word1 == first && word2 == second) {
-                            System.out.println("Error 13 on: " + program);
+                            fail("Error 13 on: " + program);
                         }
                     }else{
                         skips++;
                     }
                 } catch (Exception e) {
-                    System.out.println("Error 14 on: " + program);
+                    fail("Error 14 on: " + program, e);
                 }
             }
         }
         // 12 was the value when this test was written, if instructions are added that intentionally
         // don't have those registers in them add to the register list above or add to the count.
         // Updated to 10: because fsrmi and fsflagsi were removed
-        if(skips != 10) System.out.println("Unexpected number of psuedo-instructions skipped.");
+        if(skips != 10) fail("Unexpected number of psuedo-instructions skipped.");
     }
 }
