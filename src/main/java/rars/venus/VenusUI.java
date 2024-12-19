@@ -3,7 +3,6 @@ package rars.venus;
 import com.canonical.appmenu.Registrar;
 import com.formdev.flatlaf.FlatDarculaLaf;
 import com.formdev.flatlaf.FlatIntelliJLaf;
-import io.gitlab.jfronny.commons.logger.SystemLoggerPlus;
 import io.gitlab.jfronny.dbusmenu4j.*;
 import org.freedesktop.dbus.DBusPath;
 import org.freedesktop.dbus.connections.impl.DBusConnection;
@@ -258,32 +257,13 @@ public class VenusUI extends JFrame {
 
         // Set up dbus menu
         try {
-            var pfield = Component.class.getDeclaredField("peer");
-            pfield.setAccessible(true);
-            var peer = pfield.get(this);
+
+            var peer = Peer.Resolver.resolve(this);
             // Assume we are on X11
-            var peerClass = Class.forName("sun.awt.X11.XBaseWindow");
-            var x11Peer = peerClass.cast(peer);
-            long windowPtr = (long) peerClass.getDeclaredMethod("getWindow").invoke(x11Peer);
-            SystemLoggerPlus logger = SystemLoggerPlus.forName("dbusmenu4j");
-            DMLog log = new DMLog() {
-                @Override
-                public void warn(String s) {
-                    logger.warn(s);
-                }
-
-                @Override
-                public void error(String s, Throwable throwable) {
-                    logger.error(s, throwable);
-                }
-
-                @Override
-                public boolean isDebug() {
-                    return false;
-                }
-            };
-            SwingMenuHolder<?> menuHolder = SwingMenuHolder.get(menu, "DBusMenuRoot", log);
-            var menu = new DbusmenuImpl(windowPtr, menuHolder, log);
+            if (!(peer instanceof Peer.X11 x11)) return;
+            long windowPtr = x11.nativePointer();
+            SwingMenuHolder<?> menuHolder = SwingMenuHolder.get(menu, "DBusMenuRoot");
+            var menu = new DbusmenuImpl(windowPtr, menuHolder);
             DBusConnection connection = DBusConnectionBuilder.forSessionBus().build();
             menu.export(connection);
             var registrar = connection.getRemoteObject("com.canonical.AppMenu.Registrar", "/com/canonical/AppMenu/Registrar", Registrar.class);
