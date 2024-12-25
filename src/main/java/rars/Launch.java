@@ -7,7 +7,6 @@ import rars.riscv.InstructionSet;
 import rars.riscv.dump.DumpFormat;
 import rars.riscv.dump.DumpFormatLoader;
 import rars.riscv.hardware.*;
-import rars.simulator.ProgramArgumentList;
 import rars.simulator.Simulator;
 import rars.util.Binary;
 import rars.util.FilenameFinder;
@@ -20,10 +19,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.PrintStream;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.Observable;
-import java.util.Observer;
+import java.util.*;
 
 /*
 Copyright (c) 2003-2012,  Pete Sanderson and Kenneth Vollmar
@@ -266,7 +262,7 @@ public class Launch {
         // generated during option parsing).
         processDisplayMessagesToErrSwitch(args, displayMessagesToErrSwitch);
         displayCopyright(args, noCopyrightSwitch);  // ..or not..
-        if (args.length == 1 && args[0].equals("h")) {
+        if (args.length == 1 && Set.of("h", "--help", "-help", "help", "-h", "/h", "/help").contains(args[0].toLowerCase())) {
             displayHelp();
             return false;
         }
@@ -280,41 +276,12 @@ public class Launch {
                 programArgumentList.add(args[i]);
                 continue;
             }
-            // Once we hit "pa", all remaining command args are assumed
-            // to be program arguments.
-            if (args[i].toLowerCase().equals("pa")) {
-                inProgramArgumentList = true;
-                continue;
-            }
             // messages-to-standard-error switch already processed, so ignore.
-            if (args[i].toLowerCase().equals(displayMessagesToErrSwitch)) {
+            if (args[i].equalsIgnoreCase(displayMessagesToErrSwitch)) {
                 continue;
             }
             // no-copyright switch already processed, so ignore.
-            if (args[i].toLowerCase().equals(noCopyrightSwitch)) {
-                continue;
-            }
-            if (args[i].toLowerCase().equals("dump")) {
-                if (args.length <= (i + 3)) {
-                    out.println("Dump command line argument requires a segment, format and file name.");
-                    argsOK = false;
-                } else {
-                    if (dumpTriples == null)
-                        dumpTriples = new ArrayList<>();
-                    dumpTriples.add(new String[]{args[++i], args[++i], args[++i]});
-                    //simulate = false;
-                }
-                continue;
-            }
-            if (args[i].toLowerCase().equals("mc")) {
-                String configName = args[++i];
-                MemoryConfiguration config = MemoryConfigurations.getConfigurationByName(configName);
-                if (config == null) {
-                    out.println("Invalid memory configuration: " + configName);
-                    argsOK = false;
-                } else {
-                    MemoryConfigurations.setCurrentConfiguration(config);
-                }
+            if (args[i].equalsIgnoreCase(noCopyrightSwitch)) {
                 continue;
             }
             // Set RARS exit code for assemble error
@@ -337,112 +304,97 @@ public class Launch {
                     // Let it fall thru and get handled by catch-all
                 }
             }
-            if (args[i].toLowerCase().equals("d")) {
-                Globals.debug = true;
-                continue;
-            }
-            if (args[i].toLowerCase().equals("a")) {
-                simulate = false;
-                continue;
-            }
-            if (args[i].toLowerCase().equals("ad") ||
-                    args[i].toLowerCase().equals("da")) {
-                Globals.debug = true;
-                simulate = false;
-                continue;
-            }
-            if (args[i].toLowerCase().equals("p")) {
-                assembleProject = true;
-                continue;
-            }
-            if (args[i].toLowerCase().equals("dec")) {
-                displayFormat = DECIMAL;
-                continue;
-            }
-            if (args[i].toLowerCase().equals("g")) {
-                gui = true;
-                continue;
-            }
-            if (args[i].toLowerCase().equals("hex")) {
-                displayFormat = HEXADECIMAL;
-                continue;
-            }
-            if (args[i].toLowerCase().equals("ascii")) {
-                displayFormat = ASCII;
-                continue;
-            }
-            if (args[i].toLowerCase().equals("b")) {
-                verbose = false;
-                continue;
-            }
-            if (args[i].toLowerCase().equals("np") || args[i].toLowerCase().equals("ne")) {
-                options.pseudo = false;
-                continue;
-            }
-            if (args[i].toLowerCase().equals("we")) { // added 14-July-2008 DPS
-                options.warningsAreErrors = true;
-                continue;
-            }
-            if (args[i].toLowerCase().equals("sm")) { // added 17-Dec-2009 DPS
-                options.startAtMain = true;
-                continue;
-            }
-            if (args[i].toLowerCase().equals("smc")) { // added 5-Jul-2013 DPS
-                options.selfModifyingCode = true;
-                continue;
-            }
-            if (args[i].toLowerCase().equals("rv64")) {
-                rv64 = true;
-                continue;
-            }
-            if (args[i].toLowerCase().equals("ic")) { // added 19-Jul-2012 DPS
-                countInstructions = true;
-                continue;
-            }
-            
-            if (new File(args[i]).exists()) {  // is it a file name?
-                filenameList.add(args[i]);
-                continue;
-            }
-
-            if (args[i].indexOf("x") == 0) {
-                if (RegisterFile.getRegister(args[i]) == null &&
-                        FloatingPointRegisterFile.getRegister(args[i]) == null) {
-                    out.println("Invalid Register Name: " + args[i]);
-                } else {
-                    registerDisplayList.add(args[i]);
+            switch (args[i].toLowerCase()) {
+                case "dump" -> {
+                    if (args.length <= (i + 3)) {
+                        out.println("Dump command line argument requires a segment, format and file name.");
+                        argsOK = false;
+                    } else {
+                        if (dumpTriples == null)
+                            dumpTriples = new ArrayList<>();
+                        dumpTriples.add(new String[]{args[++i], args[++i], args[++i]});
+                        //simulate = false;
+                    }
                 }
-                continue;
+                case "mc" -> {
+                    String configName = args[++i];
+                    MemoryConfiguration config = MemoryConfigurations.getConfigurationByName(configName);
+                    if (config == null) {
+                        out.println("Invalid memory configuration: " + configName);
+                        argsOK = false;
+                    } else {
+                        MemoryConfigurations.setCurrentConfiguration(config);
+                    }
+                }
+                case "pa" -> {
+                    // Once we hit "pa", all remaining command args are assumed
+                    // to be program arguments.
+                    inProgramArgumentList = true;
+                }
+                case "d" -> Globals.debug = true;
+                case "a" -> simulate = false;
+                case "ad", "da" -> {
+                    Globals.debug = true;
+                    simulate = false;
+                }
+                case "p" -> assembleProject = true;
+                case "dec" -> displayFormat = DECIMAL;
+                case "g" -> gui = true;
+                case "hex" -> displayFormat = HEXADECIMAL;
+                case "ascii" -> displayFormat = ASCII;
+                case "b" -> verbose = false;
+                case "np", "ne" -> options.pseudo = false;
+                case "we" -> options.warningsAreErrors = true;
+                case "sm" -> options.startAtMain = true;
+                case "smc" -> options.selfModifyingCode = true;
+                case "rv64" -> rv64 = true;
+                case "ic" -> countInstructions = true;
+                default -> {
+                    if (new File(args[i]).exists()) {  // is it a file name?
+                        filenameList.add(args[i]);
+                        continue;
+                    }
+
+                    if (args[i].indexOf("x") == 0) {
+                        if (RegisterFile.getRegister(args[i]) == null &&
+                                FloatingPointRegisterFile.getRegister(args[i]) == null) {
+                            out.println("Invalid Register Name: " + args[i]);
+                        } else {
+                            registerDisplayList.add(args[i]);
+                        }
+                        continue;
+                    }
+                    // check for register name w/o $.  added 14-July-2008 DPS
+                    if (RegisterFile.getRegister(args[i]) != null ||
+                            FloatingPointRegisterFile.getRegister(args[i]) != null ||
+                            ControlAndStatusRegisterFile.getRegister(args[i]) != null) {
+                        registerDisplayList.add(args[i]);
+                        continue;
+                    }
+                    // Check for stand-alone integer, which is the max execution steps option
+                    try {
+                        Integer.decode(args[i]);
+                        options.maxSteps = Integer.decode(args[i]); // if we got here, it has to be OK
+                        continue;
+                    } catch (NumberFormatException nfe) {
+                    }
+                    // Check for integer address range (m-n)
+                    try {
+                        String[] memoryRange = checkMemoryAddressRange(args[i]);
+                        memoryDisplayList.add(memoryRange[0]); // low end of range
+                        memoryDisplayList.add(memoryRange[1]); // high end of range
+                        continue;
+                    } catch (NumberFormatException nfe) {
+                        out.println("Invalid/unaligned address or invalid range: " + args[i]);
+                        argsOK = false;
+                        continue;
+                    } catch (NullPointerException npe) {
+                        // Do nothing.  next statement will handle it
+                    }
+                    out.println("Invalid Command Argument: " + args[i]);
+                    argsOK = false;
+                }
             }
-            // check for register name w/o $.  added 14-July-2008 DPS
-            if (RegisterFile.getRegister(args[i]) != null ||
-                    FloatingPointRegisterFile.getRegister(args[i]) != null ||
-                    ControlAndStatusRegisterFile.getRegister(args[i]) != null) {
-                registerDisplayList.add(args[i]);
-                continue;
-            }
-            // Check for stand-alone integer, which is the max execution steps option
-            try {
-                Integer.decode(args[i]);
-                options.maxSteps = Integer.decode(args[i]); // if we got here, it has to be OK
-                continue;
-            } catch (NumberFormatException nfe) {
-            }
-            // Check for integer address range (m-n)
-            try {
-                String[] memoryRange = checkMemoryAddressRange(args[i]);
-                memoryDisplayList.add(memoryRange[0]); // low end of range
-                memoryDisplayList.add(memoryRange[1]); // high end of range
-                continue;
-            } catch (NumberFormatException nfe) {
-                out.println("Invalid/unaligned address or invalid range: " + args[i]);
-                argsOK = false;
-                continue;
-            } catch (NullPointerException npe) {
-                // Do nothing.  next statement will handle it
-            }
-            out.println("Invalid Command Argument: " + args[i]);
-            argsOK = false;
         }
         return argsOK;
     }
