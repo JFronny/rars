@@ -1,5 +1,9 @@
 package rars.venus.settings;
 
+import org.lwjgl.PointerBuffer;
+import org.lwjgl.system.MemoryStack;
+import org.lwjgl.util.nfd.NFDFilterItem;
+import org.lwjgl.util.nfd.NFDOpenDialogArgs;
 import rars.Globals;
 import rars.Settings;
 import rars.venus.GuiAction;
@@ -12,6 +16,8 @@ import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.io.File;
+
+import static org.lwjgl.util.nfd.NativeFileDialog.*;
 
 	/*
 Copyright (c) 2003-2006,  Pete Sanderson and Kenneth Vollmar
@@ -161,16 +167,32 @@ public class SettingsExceptionHandlerAction extends GuiAction {
     // Associated action class: selecting exception handler file.  Attached to handler selector.
     private class ExceptionHandlerSelectionAction implements ActionListener {
         public void actionPerformed(ActionEvent e) {
-            FileDialog chooser = new FileDialog(Globals.getGui(), "Select...", FileDialog.LOAD);
-            String pathname = Globals.getSettings().getExceptionHandler();
-            if (pathname != null) {
-                File file = new File(pathname);
-                if (file.exists()) chooser.setFile(file.toString());
+            File theFile = null;
+            try (MemoryStack stack = MemoryStack.stackPush()) {
+                NFDFilterItem.Buffer filters = NFDFilterItem.malloc(1);
+                filters.get(0)
+                        .name(stack.UTF8("Assembler Files"))
+                        .spec(stack.UTF8(String.join(",", Globals.fileExtensions)));
+
+                NFDOpenDialogArgs args = NFDOpenDialogArgs.calloc(stack)
+                        .filterList(filters);
+
+                String pathname = Globals.getSettings().getExceptionHandler();
+                if (pathname != null) {
+                    File file = new File(pathname);
+                    if (file.exists()) args = args.defaultPath(stack.UTF8(file.toString()));
+                }
+
+                PointerBuffer pp = stack.mallocPointer(1);
+                if (NFD_OpenDialog_With(pp, args) == NFD_OKAY) {
+                    String currentFilePath = pp.getStringUTF8(0);
+                    NFD_FreePath(pp.get(0));
+                    theFile = new File(currentFilePath);
+                }
             }
-            chooser.show();
-            if (chooser.getFile() != null) {
-                pathname = chooser.getFile();//.replaceAll("\\\\","/");
-                exceptionHandlerDisplay.setText(pathname);
+
+            if (theFile != null) {
+                exceptionHandlerDisplay.setText(theFile.getAbsolutePath());
             }
         }
     }

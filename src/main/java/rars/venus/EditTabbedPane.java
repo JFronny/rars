@@ -1,5 +1,10 @@
 package rars.venus;
 
+import org.lwjgl.PointerBuffer;
+import org.lwjgl.system.MemoryStack;
+import org.lwjgl.util.nfd.NFDFilterItem;
+import org.lwjgl.util.nfd.NFDOpenDialogArgs;
+import org.lwjgl.util.nfd.NFDSaveDialogArgs;
 import rars.AssemblyException;
 import rars.Globals;
 import rars.RISCVprogram;
@@ -15,6 +20,8 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.stream.Collectors;
+
+import static org.lwjgl.util.nfd.NativeFileDialog.*;
 
 	/*
 Copyright (c) 2003-2010,  Pete Sanderson and Kenneth Vollmar
@@ -335,32 +342,33 @@ public class EditTabbedPane extends JTabbedPane {
     private File saveAsFile(EditPane editPane) {
         File theFile = null;
         if (editPane != null) {
-            FileDialog saveDialog = null;
             // Set Save As dialog directory in a logical way.  If file in
             // edit pane had been previously saved, default to its directory.
             // If a new file (mipsN.asm), default to current save directory.
             // DPS 13-July-2011
-            saveDialog = new FileDialog(mainUI, "Save As", FileDialog.SAVE);
-            if (editPane.isNew()) {
-                saveDialog.setDirectory(editor.getCurrentSaveDirectory());
-            } else {
-                File f = new File(editPane.getPathname());
-                if (f.getParent() != null) {
-                    saveDialog.setDirectory(f.getParent());
+            try (MemoryStack stack = MemoryStack.stackPush()) {
+                PointerBuffer pp = stack.mallocPointer(1);
+                String defaultPath;
+                if (editPane.isNew()) {
+                    defaultPath = editor.getCurrentSaveDirectory();
                 } else {
-                    saveDialog.setDirectory(editor.getCurrentSaveDirectory());
+                    File f = new File(editPane.getPathname());
+                    if (f.getParent() != null) {
+                        defaultPath = f.getParent();
+                    } else {
+                        defaultPath = editor.getCurrentSaveDirectory();
+                    }
                 }
+                String paneFile = editPane.getFilename();
+                if (paneFile != null) defaultPath = paneFile;
+                if (NFD_SaveDialog_With(pp, NFDSaveDialogArgs.calloc(stack)
+                        .defaultPath(stack.UTF8(defaultPath))) == NFD_OKAY) {
+                    String currentFilePath = pp.getStringUTF8(0);
+                    NFD_FreePath(pp.get(0));
+                    theFile = new File(currentFilePath);
+                } else return null;
             }
-            String paneFile = editPane.getFilename();
-            if (paneFile != null) saveDialog.setFile(paneFile);
-            // end of 13-July-2011 code.
-
-            saveDialog.show();
-            if (saveDialog.getFiles().length != 0) {
-                return null;
-            }
-            theFile = saveDialog.getFiles()[0];
-            // Either file with selected name does not exist or user wants to 
+            // Either file with selected name does not exist or user wants to
             // overwrite it, so go for it!
             try {
                 BufferedWriter outFileStream = new BufferedWriter(new FileWriter(theFile));
@@ -514,35 +522,45 @@ public class EditTabbedPane extends JTabbedPane {
 
     private class FileOpener {
         private File mostRecentlyOpenedFile;
-        private FileDialog fileChooser;
         private int fileFilterCount;
         private Editor theEditor;
 
         public FileOpener(Editor theEditor) {
             this.mostRecentlyOpenedFile = null;
             this.theEditor = theEditor;
-            this.fileChooser = new FileDialog(mainUI, "", FileDialog.LOAD);
-            fileChooser.setFile(Globals.fileExtensions.stream()
-                    .map(s -> "*." + s)
-                    .collect(Collectors.joining("|")));
         }
 
         /*
          * Launch a file chooser for name of file to open.  Return true if file opened, false otherwise
          */
         private boolean openFile() {
-            // get name of file to be opened and load contents into text editing area.
-            fileChooser.setDirectory(theEditor.getCurrentOpenDirectory());
-            // Set default to previous file opened, if any.  This is useful in conjunction
-            // with option to assemble file automatically upon opening.  File likely to have
-            // been edited externally (e.g. by Mipster).
-            if (Globals.getSettings().getBooleanSetting(Settings.Bool.ASSEMBLE_ON_OPEN) && mostRecentlyOpenedFile != null) {
-                fileChooser.setFile(mostRecentlyOpenedFile.toString());
+            File theFile = null;
+            try (MemoryStack stack = MemoryStack.stackPush()) {
+                NFDFilterItem.Buffer filters = NFDFilterItem.malloc(1);
+                filters.get(0)
+                        .name(stack.UTF8("Assembler Files"))
+                        .spec(stack.UTF8(String.join(",", Globals.fileExtensions)));
+
+                // get name of file to be opened and load contents into text editing area.
+                String defaultPath = theEditor.getCurrentOpenDirectory();
+                // Set default to previous file opened, if any.  This is useful in conjunction
+                // with option to assemble file automatically upon opening.  File likely to have
+                // been edited externally (e.g. by Mipster).
+//                if (Globals.getSettings().getBooleanSetting(Settings.Bool.ASSEMBLE_ON_OPEN) && mostRecentlyOpenedFile != null) {
+//                    defaultPath = mostRecentlyOpenedFile.toString();
+//                }
+
+                PointerBuffer pp = stack.mallocPointer(1);
+                if (NFD_OpenDialog_With(pp, NFDOpenDialogArgs.calloc(stack)
+                        .defaultPath(stack.UTF8(defaultPath))
+                        .filterList(filters)) == NFD_OKAY) {
+                    String currentFilePath = pp.getStringUTF8(0);
+                    NFD_FreePath(pp.get(0));
+                    theFile = new File(currentFilePath);
+                }
             }
 
-            fileChooser.show();
-            if (fileChooser.getFiles().length != 0) {
-                File theFile = fileChooser.getFiles()[0];
+            if (theFile != null) {
                 theEditor.setCurrentOpenDirectory(theFile.getParent());
                 //theEditor.setCurrentSaveDirectory(theFile.getParent());// 13-July-2011 DPS.
                 if (!openFile(theFile)) {

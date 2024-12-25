@@ -1,5 +1,9 @@
 package rars.tools;
 
+import org.lwjgl.PointerBuffer;
+import org.lwjgl.system.MemoryStack;
+import org.lwjgl.util.nfd.NFDFilterItem;
+import org.lwjgl.util.nfd.NFDOpenDialogArgs;
 import rars.AssemblyException;
 import rars.Globals;
 import rars.RISCVprogram;
@@ -19,7 +23,8 @@ import java.io.*;
 import java.util.ArrayList;
 import java.util.Observable;
 import java.util.Observer;
-import java.util.stream.Collectors;
+
+import static org.lwjgl.util.nfd.NativeFileDialog.*;
 
 /*
 Copyright (c) 2003-2008,  Pete Sanderson and Kenneth Vollmar
@@ -340,28 +345,33 @@ public abstract class AbstractToolAndApplication extends JFrame implements Tool,
         openFileButton.addActionListener(
                 new ActionListener() {
                     public void actionPerformed(ActionEvent e) {
-                        FileDialog fileChooser = new FileDialog(that, "Open program...", FileDialog.LOAD);
+                        File theFile = null;
+                        try (MemoryStack stack = MemoryStack.stackPush()) {
+                            NFDFilterItem.Buffer filters = NFDFilterItem.malloc(1);
+                            filters.get(0)
+                                    .name(stack.UTF8("Assembler Files"))
+                                    .spec(stack.UTF8(String.join(",", Globals.fileExtensions)));
+
+                            PointerBuffer pp = stack.mallocPointer(1);
+                            if (NFD_OpenDialog_With(pp, NFDOpenDialogArgs.calloc(stack)
+                                    .defaultPath(stack.UTF8(mostRecentlyOpenedFile.toString()))
+                                    .filterList(filters)) == NFD_OKAY) {
+                                String currentFilePath = pp.getStringUTF8(0);
+                                NFD_FreePath(pp.get(0));
+                                theFile = new File(currentFilePath);
+                            }
+                        }
 //                        JCheckBox multiFileAssembleChoose = new JCheckBox("Assemble all in selected file's directory", multiFileAssemble);
 //                        multiFileAssembleChoose.setToolTipText("If checked, selected file will be assembled first and all other assembly files in directory will be assembled also.");
 //                        fileChooser.setAccessory(multiFileAssembleChoose);
-                        if (mostRecentlyOpenedFile != null) {
-                            fileChooser.setDirectory(mostRecentlyOpenedFile.getParent());
-                            fileChooser.setFile(mostRecentlyOpenedFile.toString());
-                        }
-                        fileChooser.setFile(Globals.fileExtensions.stream()
-                                .map(s -> "*." + s)
-                                .collect(Collectors.joining("|")));
                         // DPS 13 June 2007.  The next 4 lines add file filter to file chooser.
 //                        FilenameFilter defaultFileFilter = FilenameFinder.getFileFilter(Globals.fileExtensions, "Assembler Files", true);
 //                        fileChooser.addChoosableFileFilter(defaultFileFilter);
 //                        fileChooser.addChoosableFileFilter(fileChooser.getAcceptAllFileFilter());
 //                        fileChooser.setFilenameFilter(defaultFileFilter);
 
-                        fileChooser.show();
-                        File[] result = fileChooser.getFiles();
-                        if (result.length != 0) {
+                        if (theFile != null) {
 //                            multiFileAssemble = multiFileAssembleChoose.isSelected();
-                            File theFile = result[0];
                             try {
                                 theFile = theFile.getCanonicalFile();
                             } catch (Exception ioe) {

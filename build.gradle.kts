@@ -15,6 +15,15 @@ dependencies {
     implementation("io.gitlab.jfronny:commons-logger:1.8.0-SNAPSHOT")
     implementation("io.gitlab.jfronny:slf4j-over-jpl:1.8.0-SNAPSHOT")
 
+    implementation(platform("org.lwjgl:lwjgl-bom:3.3.5"))
+
+    implementation("org.lwjgl", "lwjgl")
+    implementation("org.lwjgl", "lwjgl-nfd")
+    listOf("linux", "linux-riscv64", "linux-arm64", "macos", "macos-arm64", "windows", "windows-arm64").forEach {
+        implementation("org.lwjgl", "lwjgl", classifier = "natives-$it")
+        implementation("org.lwjgl", "lwjgl-nfd", classifier = "natives-$it")
+    }
+
     testImplementation("org.junit.jupiter:junit-jupiter-api:5.8.1")
     testImplementation("org.junit.jupiter:junit-jupiter-params:5.8.1")
     testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:5.8.1")

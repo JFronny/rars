@@ -1,5 +1,10 @@
 package rars.venus;
 
+import org.lwjgl.PointerBuffer;
+import org.lwjgl.system.MemoryStack;
+import org.lwjgl.util.nfd.NFDFilterItem;
+import org.lwjgl.util.nfd.NFDOpenDialogArgs;
+import org.lwjgl.util.nfd.NFDSaveDialogArgs;
 import rars.Globals;
 import rars.riscv.dump.DumpFormat;
 import rars.riscv.dump.DumpFormatLoader;
@@ -19,6 +24,8 @@ import java.awt.event.WindowEvent;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
+
+import static org.lwjgl.util.nfd.NativeFileDialog.*;
 
 	/*
 Copyright (c) 2003-2008,  Pete Sanderson and Kenneth Vollmar
@@ -224,20 +231,25 @@ public class FileDumpMemoryAction extends GuiAction {
     // segment (memory range) and format selections and save to the file.
     private boolean performDump(int firstAddress, int lastAddress, DumpFormat format) {
         File theFile;
-        FileDialog saveDialog;
         boolean operationOK = false;
 
-        saveDialog = new FileDialog(mainUI, title, FileDialog.SAVE);
-        saveDialog.setDirectory(mainUI.getEditor().getCurrentSaveDirectory());
         while (!operationOK) {
-            saveDialog.show();
-            if (saveDialog.getFiles().length == 0) {
-                return false;
+
+            try (MemoryStack stack = MemoryStack.stackPush()) {
+                PointerBuffer pp = stack.mallocPointer(1);
+                if (NFD_SaveDialog_With(pp, NFDSaveDialogArgs.calloc(stack)
+                        .defaultPath(stack.UTF8(mainUI.getEditor().getCurrentSaveDirectory()))) == NFD_OKAY) {
+                    String currentFilePath = pp.getStringUTF8(0);
+                    NFD_FreePath(pp.get(0));
+                    theFile = new File(currentFilePath);
+                } else {
+                    return false;
+                }
             }
-            theFile = saveDialog.getFiles()[0];
+
             operationOK = true;
             try {
-                format.dumpMemoryRange(theFile, firstAddress, lastAddress,Globals.memory);
+                format.dumpMemoryRange(theFile, firstAddress, lastAddress, Globals.memory);
             } catch (AddressErrorException aee) {
 
             } catch (IOException ioe) {
