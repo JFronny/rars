@@ -23,7 +23,7 @@ dependencies {
 sourceSets {
     main {
         java {
-            srcDirs("src/jsoftfloat")
+            srcDirs("src/jsoftfloat/src")
         }
     }
 }
